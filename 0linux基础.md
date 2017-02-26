@@ -15,7 +15,7 @@
 LVM 的意思是逻辑卷管理器，它可以帮助我们根据文件系统的大小重新在线调整 Linux 中的 LVM 分区的大小。我们可以分别使用 lvextend 和 lvreduce 命令来增加或减小 LVM 分区的大小。
 
 - 如何内存和 CPU 的统计数据？
-我们可以分别使用 ‘free’ 和 ‘vmstat’ 命令来查看物理内存和虚拟内存的统计数据。使用 ‘sar’ 命令，我们可以看到 CPU 使用率以及其他资料。
+我们可以分别使用 'free' 和 'vmstat' 命令来查看物理内存和虚拟内存的统计数据。使用 'sar' 命令，我们可以看到 CPU 使用率以及其他资料。
 
 - 如何从原始磁盘创建分区？
 使用 fdisk，我们可以从原始磁盘创建分区。下面是具体步骤：
@@ -28,10 +28,10 @@ umask 意思是“用户文件创建掩码”，这决定了一个掩码控制�
 读(4)+写(2)＋执行(1)  gid/uid,属主，组权，其它用户的权限
 
 - 如何改变Linux中默认的运行级别？
-为了改变运行级别，我们必须编辑“/etc/inittab”文件，并且改变默认的运行等级（id:5:initdefault:），使用‘init’命令，我们改变当前的运行级别。例如：‘init 3’，这个命令将会把系统的运行级别改为第三级。
+为了改变运行级别，我们必须编辑“/etc/inittab”文件，并且改变默认的运行等级（id:5:initdefault:），使用'init'命令，我们改变当前的运行级别。例如：'init 3'，这个命令将会把系统的运行级别改为第三级。
 
 - 如何检查并挂载 nfs 共享？
-使用 ‘showmount’ 命令，我们可以看到有哪些目录通过 nfs 被共享了，例如：‘showmount -e <ip address of nfs server>’。使用 mount 命令，我们能够在 Linux 上挂载 nfs 共享。
+使用 'showmount' 命令，我们可以看到有哪些目录通过 nfs 被共享了，例如：'showmount -e <ip address of nfs server>'。使用 mount 命令，我们能够在 Linux 上挂载 nfs 共享。
 mount -t auto /dev/cdrom /mnt/cdrom
 
 - SMTP, DNS, FTP, DHCP, SSH 和 squid 使用的默认端口号是哪些？
@@ -49,27 +49,27 @@ mount -t auto /dev/cdrom /mnt/cdrom
 - 什么是网络绑定？
 网络绑定是将多个 LAN 卡聚合在一起形成一个单一的绑定接口，来提供容错性和高性能。网络绑定也被叫做NIC Teaming。
 
-- 如何检查哪些端口正在监听我的 Linux 服务器？
-使用 ‘netstat -l’ 和 ‘lsof -i’ 命令
+- **如何检查哪些端口正在监听我的 Linux 服务器？**
+使用 'netstat -l' 和 'lsof -i' 命令
 
 - 列出在一个特定的运行级别上，Linux 服务器所启动的服务。
 使用chkconfig --list | grep 5:on命令，我们可以列出在运行级别5上启动的服务。查看其他运行级别是，只要将5换成对应的级别。
 如何在一个特定的运行级别上启动服务？
-我们可以使用类似 chkconfig <Service-Name> on –level 3 的命令。
+我们可以使用类似 'chkconfig <Service-Name> on –level 3 '的命令。
 
 - 什么是Puppet 服务器？
 Puppet 是一个开源和企业软件，用来配置管理 UNIX 中的 toll 如操作系统。Puppet是一个自动化软件，使用代码推送配置到他的客户端（puppet 代理）。Puppet 代码可以完了各种任务，从安装新软件到检查文件权限，或者更新用户账户以及很多其他任务。
 Puppet 中的 manifests 是什么？
 Puppet 中的 mainfests 是指定客户端配置的文件。
 在 Puppet 服务器中哪一个命令用于给请求的证书签名？
-在2.x中使用 ‘puppetca  –sign hostname-of-agent’ 
-在3.x中使用 ‘puppet ca  sign hostname-of-agent’
+在2.x中使用 'puppetca  –sign hostname-of-agent' 
+在3.x中使用 'puppet ca  sign hostname-of-agent'
 
 - 如何在目录中找到所有的常规文件？
 使用命令 find /<directory -type f
 
 - 在 Linux 中什么是平均负载？
-平均负载被定义为在1分钟，5分钟和15分钟内等待在运行队列中的进程数目和当前正在执行的进程数目之和的平均值。使用 ‘top’ 和 ‘uptime’ 命令我们可以查询一个 Linux 服务器的平均负载。
+平均负载被定义为在1分钟，5分钟和15分钟内等待在运行队列中的进程数目和当前正在执行的进程数目之和的平均值。使用 'top' 和 'uptime' 命令我们可以查询一个 Linux 服务器的平均负载。
 
 
 
@@ -90,6 +90,7 @@ RSS:物理内存集,进程战用实际物理内存空间
 
 加载BIOS–>读取MBR–>Boot Loader–>加载内核–>用户层init一句inittab文件来设定系统运行的等级(一般3或者5，3是多用户命令行，5是界面)–>init进程执行rc.syninit–>启动内核模块–>执行不同级别运行的脚本程序–>执行/etc/rc.d/rc.local(本地运行服务)–>执行/bin/login,就可以登录了。
 
+小结：BIOS ->MBR -> boot loader -> kernel -> init process -> login 
 
 - 符号链接与硬链接的区别
 
@@ -112,7 +113,9 @@ dd 命令是以个强大的命令，在复制的同时进行转换
 - FTP的主动模式和被动模式
 
 FTP协议有两种工作方式：PORT方式和PASV方式，中文意思为主动式和被动式。
+
 PORT（主动）方式的连接过程是：客户端向服务器的FTP端口（默认是21）发送连接请 求，服务器接受连接，建立一条命令链路。当需要传送数据时，客户端在命令链路上用PORT 命令告诉服务器：“我打开了XX端口，你过来连接我”。于是服务器从20端口向客户端的 XX端口发送连接请求，建立一条数据链路来传送数据。
+
 PASV（被动）方式的连接过程是：客户端向服务器的FTP端口（默认是21）发送连接请 求，服务器接受连接，建立一条命令链路。当需要传送数据时，服务器在命令链路上用PASV 命令告诉客户端：“我打开了XX端口，你过来连接我”。于是客户端向服务器的XX端口 发送连接请求，建立一条数据链路来传送数据。
 从上面可以看出，两种方式的命令链路连接方法是一样的，而数据链路的建立方法就完 全不同。
 
@@ -125,8 +128,8 @@ PASV（被动）方式的连接过程是：客户端向服务器的FTP端口（�
 1. 默认用户配置,`.profile`和`.bashrc`
 1. 配置环境变量 `export PATH=XX:$PATH`和`export LD_LIBRARY_PATH=XX:$LD_LIBRARY_PATH`
 1. pci 设备的厂商和版本  `lspci`
-全部磁盘块由四个部分组成，分别为引导块 、专用块 、 i节点表块 和数据存储块。
-设定限制用户使用磁盘空间的命令是 quota 。
+1. 全部磁盘块由四个部分组成，分别为引导块 、专用块 、 i节点表块 和数据存储块。
+1. 设定限制用户使用磁盘空间的命令是 quota 。
 
 [搜狐linux工程师面试题](http://www.wuhanios.com/xueyuanjiuye/mianshishiti/17.html)
 
@@ -147,42 +150,71 @@ key        shmid      owner      perms      bytes      nattch     status
 
 ```
 
-## 待续ing
 
 2. 用什么命令查询指定IP地址的服务器端口
-
+	`yum install-y nmap`
 3. crontab中用什么命令定义某个程序执行的优先级别 
- 
+ 	nice  renice
 4. 如何让history命令显示具体时间
+
+	`HISTTIMEFORMAT="%Y-%m-%d %H:%M:%S"`
+	`export HISTTIMEFORMAT `
+	重新开机后会还原，可以写／etc／profile
 
 5. 查看Linux系统当前指定用户的邮件队列
 
 6. 查看Linux系统当前加载的库文件
 
-7. Ext3文件系统如何恢复RM命令删除文件 8.查看当前系统某一硬件的驱动版本.比如网卡 ehtool –i eth0
+	`lsof`
+
+7. Ext3文件系统如何恢复RM命令删除文件 
+
+8.查看当前系统某一硬件的驱动版本.比如网卡 ehtool –i eth0
 
 9. DNS服务器有哪三种类型 
-
+	主 从 缓存
 10. apache目录访问身份验证的实施步骤（用htpasswd设置）
 
 11. 使用tcpdump监听主机IP为192.168.1.1,tcp端口为80的数据,写出相应命令
 
 12. 简述IDS作用和实现原理入侵检测
-
+	入侵检测，设备放在intelnet进来的第一台路由后面。对进入路由的所有的包进行检测，如果有异常就报警。
 13. 用sed修改test.txt的23行test为tset；
+	sed '23s/test/tset/g' test.txt
+
+14. 当用户在浏览器当中输入一个网站，说说计算机对dns解释经过那些流程？（注：本机跟本地dns还没有缓存）
+	a. 用户输入网址到浏览器 
+	b. 浏览器发出DNS请求信息 
+	c. 计算机首先查询本机HOST文件，看是否存在，存在直接返回结果，不存在，继续下一步 
+	d. 计算机通过/etc/resolv.conf按照本地DNS的顺序，向合法dns服务器查询IP结果， 
+	e. 合法dns返回dns结果给本地dns，本地dns并缓存本结果，直到TTL过期，才再次查询此结果 
+	f. 返回IP结果给浏览器 
+	g. 浏览器根据IP信息，获取页面
+
+1. linux下如何改IP,主机名，DNS
+	```
+	[root@test4 ~]#vim/etc/sysconfig/network-scripts/ifcfg-eth0 
+	[root@test4 ~]#vim/etc/sysconfig/network 
+	[root@test4 ~]# vim/etc/resolv.conf
+	```
+
+
+
+# Linux私房菜
 
 
 [鸟哥的 Linux 私房菜 -- 基础学习篇目录](http://cn.linux.vbird.org/linux_basic/linux_basic.php)
 
 
+# -------------待续!!!---------------------
 
 
 
-## shell编程
+# shell编程
 
 
 
-
+# -------------待续!!!---------------------
 
 
 ## 命令整理
@@ -266,6 +298,27 @@ Disk quotas for user asc16 (uid 657):
 
 
 
+- lsof（list open files）
+
+[每天一个linux命令（51）：lsof命令](http://www.cnblogs.com/peida/archive/2013/02/26/2932972.html)
+一个列出当前系统打开文件的工具。
+
+任何事物都以文件的形式存在，通过文件不仅仅可以访问常规数据，还可以访问网络连接和硬件。所以如传输控制协议 (TCP) 和用户数据报协议 (UDP) 套接字等，系统在后台都为该应用程序分配了一个文件描述符，无论这个文件的本质如何，该文件描述符为应用程序与基础操作系统之间的交互提供了通用接口。因为应用程序打开文件的描述符列表提供了大量关于这个应用程序本身的信息，因此通过lsof工具能够查看这个列表对系统监测以及排错将是很有帮助的。
+
+```
+-a 列出打开文件存在的进程
+-c<进程名> 列出指定进程所打开的文件
+-g  列出GID号进程详情
+-d<文件号> 列出占用该文件号的进程
++d<目录>  列出目录下被打开的文件
++D<目录>  递归列出目录下被打开的文件
+-n<目录>  列出使用NFS的文件
+-i<条件>  列出符合条件的进程。（4、6、协议、:端口、 @ip ）
+-p<进程号> 列出指定进程号所打开的文件
+-u  列出UID号进程详情
+-h 显示帮助信息
+-v 显示版本信息
+```
 
 
 
