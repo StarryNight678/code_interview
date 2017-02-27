@@ -1444,3 +1444,8 @@ Java没有共享内存机制，同时Java的管道也只能用于Java线程间�
 首先，我们需要说明一个基本概念：什么是管道？ 
 管道是Linux中很重要的一种通信方式,是把一个程序的输出直接连接到另一个程序的输入,常说的管道多是指无名管道,无名管道只能用于具有亲缘关系的进程之间，这是它与有名管道的最大区别。有名管道叫named pipe或者FIFO(先进先出)，可以用函数mkfifo()创建。
 
+
+
+## 重要点
+
+[JAVA多线程和并发基础面试问答](http://ifeve.com/java-multi-threading-concurrency-interview-questions-with-answers/)
