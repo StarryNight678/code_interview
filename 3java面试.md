@@ -191,3 +191,41 @@ Java面试题全集（以下列出题目，整理以及看答案请转至：
 168. 什么是XSS攻击？什么是SQL注入攻击？什么是CSRF攻击？
 169. 什么是领域模型(domain model)？贫血模型(anaemic domain model)和充血模型(rich domain model)有什么区别？
 170. 谈一谈测试驱动开发（TDD）的好处以及你的理解。
+
+
+# 整理
+
+## java面试宝典2016版
+
+1. java跳出多层循环
+
+```java
+ok:
+for(int i=0;i<10;i++) {
+	for(int j=0;j<10;j++) {
+	System.out.println(“i=” + i + “,j=” + j);
+	if(j == 5) break ok;
+	}
+}
+```
+
+或者采用标志数字
+
+```java
+for(int i=0;i<arr.length&& !found;i++) {
+	for(int j=0;j<arr[i].length;j++){
+	System.out.println(“i=” + i + “,j=” + j);
+	if(arr[i][j] ==5) {
+		found = true;
+		break;
+		}
+	}
+}
+```
+
+1. switch
+
+switch（expr1）中，expr1只能是一个整数表达式或者枚举常量（更大字体），整数表达式可以是int基本类型或Integer包装类型，由于，byte,short,char都可以隐含转换为int，可以.
+long和String类型都不符合switch的语法规定，并且不能被隐式转换成int类型，所以，它们不能作用于swtich语句中。
+
+1. 使用final关键字修饰一个变量时，是指引用变量不能变，引用变量所指向的对象中的内容还是可以改变的。
