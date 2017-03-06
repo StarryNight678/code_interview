@@ -1069,6 +1069,12 @@ GC采用有向图的方式记录和管理堆(heap)中的所有对象。
 "可达的"，哪些对象是"不可达的"。当GC确定一些对象为"不可达"时，GC就有责任回收这些内存空间。可以。程序员可以手动执行System.gc()，通知GC运行，但是Java语言规范并不保证GC一定会执行。
 
 ### 集合框架
+
+![](http://img.blog.csdn.net/20130430102251761)
+
+
+
+
 ### string，stringBuilder,StringBuffer
 ### 二叉树遍历
 ### Arrays.sort实现原理和Collection实现原理
