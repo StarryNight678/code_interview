@@ -298,7 +298,7 @@ equals比较对象内容是否相同.
 重写
 父类引用指向子类对象
 
-
+**靠的是父类或接口定义的引用变量可以指向子类或具体实现类的实例对象**
 
 - Java中实现多态的机制是什么？
 
@@ -376,8 +376,30 @@ str = str + i;
 String覆盖了equals方法和hashCode方法，而StringBuffer没有覆盖equals方法和hashCode方法，所以，将StringBuffer对象存储进Java集合类中时会出现问题。
 
 
+String实现了equals方法，new String(“abc”).equals(newString(“abc”)的结果为true,
+
+而StringBuffer没有实现equals方法，所以，new StringBuffer(“abc”).equals(newStringBuffer(“abc”)的结果为false。
+
 - 数组有没有length()这个方法? String有没有length()这个方法？
 
 数组没有length()这个方法，有length的属性。String有有length()这个方法。
+
+
+- 创建了多少对象. 
+
+```java
+String s1 = "a";
+String s2 = s1 + "b";
+String s3 = "a" + "b";
+System.out.println(s2 == "ab");//false
+System.out.println(s3 == "ab");//true
+```
+
+在编译阶段`String s3 = "a" + "b"`是直接对常量进行优化的.
+
+```java
+String s="a"+"b"+"c"+"d";
+System.out.println(s== "abcd");
+```
 
 # StringBuffer
