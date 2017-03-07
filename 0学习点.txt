@@ -11,4 +11,21 @@ Thinking in Java之List、ArrayList源码学习
 Thinking in Java之ArrayList、Vector比较
 Thinking in Java之Set、HashSet源码学习
 
+1. A三面 java 开发:
+
+	算法，项目，jdk源码，jvm,数据库，事务，获取技术的渠道.
+
+	- 算法
+	了解哪些算法,自己讲一讲.以及在什么地方用到过.
+	红黑树，动态规划。
+
+	- jdk源码
+	问你看过哪些的实现,自己讲一讲.
+	
+	- jvm
+
+	- 数据库,事务.
+	
+
+
 

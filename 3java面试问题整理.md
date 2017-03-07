@@ -1,6 +1,5 @@
 # 整理
 
-### 4 种字符串查找算法总结
 
 ### 集合框架
 
@@ -1349,7 +1348,6 @@ class MyCallable implements Callable<Integer> {
 ### 什么是多态（我举得例子：beanFactory）
 ### session的实现机制
 
-```
 
 第三种
 
