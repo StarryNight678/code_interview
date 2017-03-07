@@ -1,0 +1,14 @@
+# Want to learn
+
+1. Nginx服务器做的负载均衡
+1. cms进行垃圾收集
+1. 垃圾收集器实现
+Collections、Arrays类源码
+[Thinking in Java之集合框架浅析](http://blog.csdn.net/lcore/article/details/8868943)
+[Thinking in Java之集合相关整理(源码分析)](http://blog.csdn.net/lcore/article/details/8886696)
+Thinking in Java之深入Collection源码学习
+Thinking in Java之List、ArrayList源码学习
+Thinking in Java之ArrayList、Vector比较
+Thinking in Java之Set、HashSet源码学习
+
+

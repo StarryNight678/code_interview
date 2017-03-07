@@ -1,5 +1,397 @@
 # 整理
 
+### 4 种字符串查找算法总结
+
+### 集合框架
+
+![](http://img.blog.csdn.net/20130430102251761)
+
+![](http://images.cnitblog.com/i/532548/201404/262238192165666.jpg)
+
+![](http://blog.tingyun.com/dynamic/transitionResourcePath?key=image/forumImage20160407110518442.png&filename=4.66.png)
+
+
+[Java Collections Framework（JAVA集合框架）中的常用集合实现简介](http://blog.tingyun.com/web/article/detail/396)
+
+Collections、Arrays类
+
+Collections、Arrays是集合类的一个工具类/帮助类，其中提供了一系列静态方法，用于对集合中
+元素进行排序、搜索以及线程安全等各种操作。
+
+### Collection
+
+1. List<E>
+1. Queue<E>
+1. Set<E>
+
+hashCode() 
+equals(Object o) 
+size() 
+iterator() 
+size() - 集合内的对象数量
+
+add(E)/addAll(Collection) - 向集合内添加单个/批量对象
+
+remove(Object)/removeAll(Collection) - 从集合内删除单个/批量对象
+
+contains(Object)/containsAll(Collection) - 判断集合中是否存在某个/某些对象
+
+toArray() - 返回包含集合内所有对象的数组
+
+### stack
+
+```
+java.lang.Object
+  继承者 java.util.AbstractCollection<E>
+      继承者 java.util.AbstractList<E>
+          继承者 java.util.Vector<E>
+              继承者 java.util.Stack<E>
+```
+
+
+boolean	empty()           测试堆栈是否为空。
+
+E	peek()           查看堆栈顶部的对象，但不从堆栈中移除它。
+
+E	pop()           移除堆栈顶部的对象，并作为此函数的值返回该对象。
+
+E	push(E item)           把项压入堆栈顶部。
+
+int	search(Object o)           返回对象在堆栈中的位置，以 1 为基数。
+
+
+问题由来
+
+曾经遇到过一条面试题，“Java中的Stack是通过Vector来实现的，这种设计被认为是不良的设计，说说你的看法？”
+
+java API说明
+
+Deque 接口及其实现提供了 LIFO 堆栈操作的更完整和更一致的 set，应该优先使用此 set，而非此类。例如：
+
+   Deque<Integer> stack = new ArrayDeque<Integer>();
+
+
+
+1. 继承Vector确实不好，1没来由的多了非stack特性的方法，多了错误选择的可能性；2Vector带来了线程安全性，这个非必需的特性带来了性能丢失。
+2. 使用数组实现不一定比链表实现优良。栈的大小在非常非常大的情况下，基于链表的实现才会比数组实现体现出性能优势，一般情况下，数组的实现在速度上反而超过链表的实现。因为数组元素都在cpu缓存内，而链表的元素就需要查询了。
+
+
+### List
+
+```java
+public interface List<E>
+extends Collection<E>
+```
+
+允许重复的元素。
+
+
+List在Collection基础上增加的主要方法包括：
+
+get(int) - 返回指定index位置上的对象
+
+add(E)/add(int, E) - 在List末尾/指定index位置上插入一个对象
+
+set(int, E) - 替换置于List指定index位置上的对象
+
+indexOf(Object) - 返回指定对象在List中的index位置
+
+subList(int,int) - 返回指定起始index到终止index的子List对象
+
+
+
+
+- **实现类 **
+
+ArrayList, Vector,LinkedList
+
+
+- ArrayList
+
+ArrayList基于**数组**来实现集合的功能，其内部维护了一个可变长的对象数组，集合内所有对象存储于这个数组中，并实现该数组长度的动态伸缩
+
+- LinkedList
+
+LinkedList基于**链表**来实现集合的功能，其实现了静态类Node，集合中的每个对象都由一个Node保存，每个Node都拥有到自己的前一个和后一个Node的引用
+
+ArrayList vs LinkedList
+
+ArrayList的寻址效率更高，基于数组实现的ArrayList可直接定位到目标对象，而LinkedList需要从头Node或尾Node开始向后/向前遍历若干次才能定位到目标对象
+
+LinkedList的插入、删除和顺序遍历的效率更高，因为LinkedList的每一个Node都拥有上一个和下一个Node的引用。但需要注意，遍历LinkedList时应用iterator方式，不要用get(int)方式，否则效率会很低
+
+-Vector
+
+Vector和ArrayList很像，都是基于数组实现的集合，它和ArrayList的主要区别在于
+
+Vector是线程安全的，而ArrayList不是
+
+由于Vector中的方法基本都是synchronized的，其性能低于ArrayList
+
+Vector可以定义数组长度增长的因子，ArrayList不能
+
+### Queue
+
+```java
+public interface Queue<E>
+extends Collection<E>
+```
+实现类LinkedList
+
+	1. poll()  获取并移除此队列的头
+	1. add(E e) 
+	1. remove() 
+	1. peek()   获取但不移除此队列的头
+
+Queue接口继承Collection接口，实现FIFO（先进先出）的集合。Queue接口的常用方法包括：
+
+add(E)/offer(E)：入队，即向队尾追加元素，二者的区别在于如果队列是有界的，add方法在队列已满的情况下会抛出IllegalStateException，而offer方法只会返回false
+
+remove()/poll()：出队，即从队头移除1个元素，二者的区别在于如果队列是空的，remove方法会抛出NoSuchElementException，而poll只会返回null
+
+element()/peek()：查看队头元素，二者的区别在于如果队列是空的，element方法会抛出NoSuchElementException，而peek只会返回null
+
+
+- Deque
+
+实现类 ArrayDeque, LinkedBlockingDeque, LinkedList
+
+```java
+public interface Deque<E>
+extends Queue<E>
+```
+
+Deque继承了Queue接口，定义了双端队列，也就是说Deque可以从队头或队尾进行出队/入队操作。它比Queue更加灵活，可以用于实现Queue、Stack等数据结构。Deque在Queue的基础上提供了额外的方法：
+
+addFirst(E)/addLast(E)/offerFirst(E)/offerLast(E)
+
+removeFirst()/removeLast()/pollFirst()/pollLast()
+
+getFirst()/getLast()/peekFirst()/peekLast()
+
+
+### Set
+
+实现类 HashSet TreeSet
+
+不要将Collection认为是Java集合中的顶级接口，Map和Collection在层次结构
+上没有必然的关系
+
+
+Set的常用实现也包括 HashSet、TreeSet、ConcurrentSkipListSet等，原理和对应的Map实现完全一致，此处不再赘述。 
+
+
+
+###  Map
+
+
+size() - 集合内的对象数量 
+
+put(K,V)/putAll(Map) - 向Map内添加单个/批量对象
+
+get(K) - 返回Key对应的对象
+
+remove(K) - 删除Key对应的对象
+
+keySet() - 返回包含Map中所有key的Set
+
+values() - 返回包含Map中所有value的Collection
+
+entrySet() - 返回包含Map中所有key-value对的EntrySet
+
+containsKey(K)/containsValue(V) - 判断Map中是否存在指定key/value
+
+
+
+- HashMap
+
+HashMap处理哈 希冲突的方法是拉链法
+
+
+- Hashtable
+
+HashMap的前身,Hashtable是线程安全的，其提供的方法几乎都是同步的。
+
+- ConcurrentHashMap
+
+ConcurrentHashMap是HashMap的线程安全版（自JDK1.5引入），提供比Hashtable更高效的并发性能
+
+
+- HashMap vs Hashtable vs ConcurrentHashMap
+
+三者在数据存储层面的机制基本一致
+
+HashMap不是线程安全的，多线程环境下除了不能保证数据一致性之外，还有可能引发Entry链表成环，导致get方法死循环
+
+Hashtable是线程安全的，能保证绝对的数据一致性，但是由于其粗暴地将所有操作加锁，性能低下
+
+ConcurrentHashMap 也是线程安全的，使用分离锁和volatile等方法极大地提升了读写性能，同时也能保证在绝大部分情况下的数据一致性。但其不能保证绝对的数据一致性， 在一个线程向Map中加入Entry的操作没有完全完成之前，其他线程有可能读不到新加入的Entry。 
+
+- LinkedHashMap
+
+LinkedHashMap与HashMap非常类似，唯一的不同在于前者的Entry在HashMap.Entry的基础上增加了到前一个插入和后一个插入的Entry的引用，以实现能够按Entry的插入顺序进行遍历。 
+
+- TreeMap
+
+TreeMap是基于红黑树实现的Map结构，其Entry类拥有到左/右叶子节点和父节点的引用，同时还记录了自己的颜色：
+
+TreeMap的Entry是有序的，所以提供了一系列方便的功能，比如获取以升序或降序排列的KeySet(EntrySet)、获取在指定key(Entry)之前/之后的key(Entry)等等。适合需要对key进行有序操作的场景。 
+
+
+### Java垃圾回收机制二 工作原理–How Java Garbage Collection Works?
+
+
+### string，stringBuilder,StringBuffer
+
+1. String 字符串常量
+1. StringBuffer 字符串变量（线程安全）
+1. StringBuilder 字符串变量（非线程安全）
+
+
+对 String 类型进行改变的时候其实都等同于生成了一个新的 String 对象，然后将指针指向新的 String 对象,生成的多说了 GC 就会开始工作. 速度相当慢.
+
+在大部分情况下 StringBuffer > String
+StringBuffer 上的主要操作是 append 和 insert 方法
+
+
+stringBuilder一个可变的字符序列。此类提供一个与 StringBuffer 兼容的 API，但不保证同步。
+
+
+
+### 二叉树遍历
+### Arrays.sort实现原理和Collection实现原理
+
+[Java Arrays.sort源代码解析　](http://www.cnblogs.com/gw811/archive/2012/10/04/2711746.html)
+
+[深入理解 timsort 算法（1）：自适应归并排序](http://blog.jobbole.com/99681/)
+
+也就是说，优化的归并排序既快速（nlog(n)）又稳定。
+
+对于对象的排序，**稳定性很重要**。比如成绩单，一开始可能是按人员的学号顺序排好了的，现在让我们用成绩排，那么你应该保证，本来张三在李四前面，即使他们成绩相同，张三不能跑到李四的后面去。
+
+而快速排序是不稳定的，而且最坏情况下的时间复杂度是O(n^2)。
+
+另外，对象数组中保存的只是对象的引用，这样多次移位并不会造成额外的开销，但是，对象数组****对比较次数**一般比较敏感，有可能对象的比较比单纯数的比较开销大很多。归并排序在这方面比快速排序做得更好，这也是选择它作为对象排序的一个重要原因之一。
+
+排序优化：实现中快排和归并都采用递归方式，而在递归的底层，也就是待排序的数组长度小于7时，直接使用**冒泡排序**，而不再递归下去。
+
+分析：长度为6的数组冒泡排序总比较次数最多也就1+2+3+4+5+6=21次，最好情况下只有6次比较。而快排或归并涉及到递归调用等的开销，其时间效率在n较小时劣势就凸显了，因此这里采用了冒泡排序，这也是对快速排序极重要的优化。
+
+看源代码，根据这个（java中Sort方法底层实现），应该是基于速排和优化的合并排。
+
+
+- 源码中的快速排序，主要做了以下几个方面的优化
+
+
+　　1）当待排序的数组中的元素个数较少时，源码中的阀值为7，采用的是插入排序。尽管插入排序的时间复杂度为0(n^2)，但是当数组元素较少时，插入排序优于快速排序，因为这时快速排序的递归操作影响性能。
+
+　　2）较好的选择了划分元（基准元素）。能够将数组分成大致两个相等的部分，避免出现最坏的情况。例如当数组有序的的情况下，选择第一个元素作为划分元，将使得算法的时间复杂度达到O(n^2).
+
+- 源码中选择划分元的方法
+
+当数组大小为 size=7 时 ，取数组中间元素作为划分元。int n=m>>1;(此方法值得借鉴)
+
+当数组大小 7<size<=40时，取首、中、末三个元素中间大小的元素作为划分元。
+
+当数组大小 size>40 时 ，从待排数组中较均匀的选择9个元素，选出一个伪中数做为划分元。
+
+　　3）根据划分元 v ，形成不变式 v* (<v)* (>v)* v*
+
+　　普通的快速排序算法，经过一次划分后，将划分元排到素组较中间的位置，左边的元素小于划分元，右边的元素大于划分元，而没有将与划分元相等的元素放在其附近，这一点，在Arrays.sort()中得到了较大的优化。
+
+　　举例：15、93、15、41、6、15、22、7、15、20
+
+　　因  7<size<=40,所以在15、6、和20 中选择v = 15 作为划分元。
+
+　　经过一次换分后： 15、15、7、6、41、20、22、93、15、15. 与划分元相等的元素都移到了素组的两边。
+
+　　接下来将与划分元相等的元素移到数组中间来，形成：7、6、15、15、15、15、41、20、22、93.
+
+　　最后递归对两个区间进行排序[7、6]和[41、20、22、93].
+
+
+- 事实上Collections.sort方法底层就是调用的array.sort方法，而且不论是Collections.sort或者是Arrays.sort方法
+
+不论是Collections.sort方法或者是Arrays.sort方法，底层实现都是TimSort实现的，这是jdk1.7新增的，以前是归并排序。**TimSort算法**就是找到已经排好序数据的子序列，然后对剩余部分排序，然后合并起来 
+
+
+### TimSort算法
+
+
+[Timsort算法简介](http://xieyan87.com/2015/08/timsort%E7%AE%97%E6%B3%95%E7%AE%80%E4%BB%8B/)
+
+Timsort是一种结合了归并排序和插入排序的混合算法，由Tim Peters在2002年提出，并且已经成为Python 2.3版本以后内置排序算法，并且Java SE 7, Android平台，GNU Octave也引入了这一排序算法。简单来说，这个算法可以概括为两步：
+1. 第一步就是把待排数组划分成一个个run，当然run不能太短，如果长度小于minrun这个阈值，则用插入排序进行扩充；
+2. 第二步将run入栈，当栈顶的run的长度满足：runLen[n-2] <= runLen[n-1] + runLen[n]或者 runLen[n-1] <= runLen[n], 则对两个短run归并为一个新run，则到只剩栈顶元素时排序也完成了。
+
+
+Timsort算法作为一个稳定性的排序算法，最好时间复杂度为O(n)O(n), 平均和最坏复杂度都为O(nlogn)O(nlogn), 空间复杂度为O(n)O(n). Java SE 7中的Timsort内部实现对栈空间的深度是定长数组，在大多数情况下满足使用要求，
+
+
+### Object常用方法和equal和hashCode
+
+- hashCode()
+返回该对象的哈希码值。
+
+这个方法的存在主要是配合一些基于hash表的数据结构的集合，像HashMap。在这些基于hash结构的数据集合中，存放的对象要有自己的hashCode方法，除了String类型。以HashMap为例:
+
+HashMap在存放或者检索数据时，都会先去计算的key的hash值。这些基于hash表的集合，只能要求被存放的对象实现自己的hash方法，保证hash的均匀性。在jdk中，为了保证一个通用的计算hash的方法，jvm采用将对象的内部地址转换成一个整数来实现我们也可以根据自己的逻辑修改hashcode方法
+
+
+- equals(Object o)
+
+用于测试某个对象是否同另一个对象相等
+
+在Java语言中要比较两个对象是否相等，有时只用"=="是不行的，还有这个equals方法。比如在Java中比较两个字符串相等，那就必须使用equals方法
+因为，==计算表达式在判断引用对象时，只是去判断内存地址引用是否一样，而equals方法才会去判断内存的值是否一样或是按照自实行逻辑去判断。
+
+-必要时重写equals
+
+equals方法在很多地方会调用，包括我们直接调用equals方法，还有判断集合对象是否相等时的间接调用。在这种间接调用时，我们一般都会去重写它的equals方法。比如，有个User对象，我们认为User的id相等就是同一个对象
+
+重写equals方法的要求：
+
+1. 自反性：对于任何非空引用x，x.equals(x)应该返回true。
+1. 对称性：对于任何引用x和y，如果x.equals(y)返回true，那么y.equals(x)也应该返回true。
+1. 传递性：对于任何引用x、y和z，如果x.equals(y)返回true，y.equals(z)返回true，那么x.equals(z)1. 也应该返回true。
+1. 一致性：如果x和y引用的对象没有发生变化，那么反复调用x.equals(y)应该返回同样的结果。
+1. 非空性：对于任意非空引用x，x.equals(null)应该返回false。
+
+
+-重写了equals方法要不要重写hashCode方法
+
+当我们重写hashcode方法时，都会有一套模板，我们使用到的编辑器一般都会支持基于模板自动生成。如果留心，你会发现当你使用这个功能时重写equals方法会自动也把hashcode方法重写。
+
+
+在Java规范中，要求：
+
+如果a.equals(b),那么a和b的hashcode方法一定要相等，但a和b不相等时，hashcode方法可以相等也可以不相等。所以当我们重写了它的equals方法后，最好遵从这份规范，修改它的hashcode方法。
+
+
+### 什么是多态（我举得例子：beanFactory）
+### session的实现机制
+
+因此在web应用开发里就出现了保持http链接状态的技术：一个是cookie技术，另一种是session技术。
+
+- cookie技术是客户端的解决方案
+
+Cookie就是由服务器发给客户端的特殊信息，而这些信息以文本文件的方式存放在客户端，然后客户端每次向服务器发送请求的时候都会带上这些特殊的信息。让我们说得更具体一些：当用户使用浏览器访问一个支持Cookie的网站的时候，用户会提供包括用户名在内的个人信息并且提交至服务器；接着，服务器在向客户端回传相应的超文本的同时也会发回这些个人信息，当然这些信息并不是存放在HTTP响应体（Response Body）中的，而是存放于HTTP响应头（Response Header）；当客户端浏览器接收到来自服务器的响应之后，浏览器会将这些信息存放在一个统一的位置，对于Windows操作系统而言，我们可以从： [系统盘]:\Documents and Settings\[用户名]\Cookies目录中找到存储的Cookie；自此，客户端再向服务器发送请求的时候，都会把相应的Cookie再次发回至服务器。而这次，Cookie信息则存放在HTTP请求头（Request Header）了。有了Cookie这样的技术实现，服务器在接收到来自客户端浏览器的请求之后，就能够通过分析存放于请求头的Cookie得到客户端特有的信息，从而动态生成与该客户端相对应的内容。通常，我们可以从很多网站的登录界面中看到“请记住我”这样的选项，如果你勾选了它之后再登录，那么在下一次访问该网站的时候就不需要进行重复而繁琐的登录动作了，而这个功能就是通过Cookie实现的。
+
+session技术则是服务端的解决方案，**它是通过服务器来保持状态的**
+
+Session指的是服务器端为客户端所开辟的存储空间，在其中保存的信息就是用于保持状态。
+
+
+Java中是通过调用HttpServletRequest的getSession方法（使用true作为参数）创建的。在创建了Session的同时，服务器会为该Session生成唯一的Session id，而这个Session id在随后的请求中会被用来重新获得已经创建的Session
+
+。由于Session这个词汇包含的语义很多，因此需要在这里明确一下 Session的含义。首先，我们通常都会把Session翻译成会话，因此我们可以把客户端浏览器与服务器之间一系列交互的动作称为一个 Session。从这个语义出发，我们会提到Session持续的时间，会提到在Session过程中进行了什么操作等等；其次，Session指的是服务器端为客户端所开辟的存储空间，在其中保存的信息就是用于保持状态。从这个语义出发，我们则会提到往Session中存放什么内容，如何根据键值从 Session中获取匹配的内容等。要使用Session，第一步当然是创建Session了。那么Session在何时创建呢？当然还是在服务器端程序运行的过程中创建的，不同语言实现的应用程序有不同创建Session的方法，而在Java中是通过调用HttpServletRequest的getSession方法（使用true作为参数）创建的。在创建了Session的同时，服务器会为该Session生成唯一的Session id，而这个Session id在随后的请求中会被用来重新获得已经创建的Session；在Session被创建之后，就可以调用Session相关的方法往Session中增加内容了，而这些内容只会保存在服务器中，发到客户端的只有Session id；当客户端再次发送请求的时候，会将这个Session id带上，服务器接受到请求之后就会依据Session id找到相应的Session，从而再次使用之。正式这样一个过程，用户的状态也就得以保持了。
+ 
+  
+### TCP/IP协议过程
+
+
+
+
 ## java面试宝典2016版
 
 1. java跳出多层循环
@@ -1068,16 +1460,5 @@ GC采用有向图的方式记录和管理堆(heap)中的所有对象。
 对象是
 "可达的"，哪些对象是"不可达的"。当GC确定一些对象为"不可达"时，GC就有责任回收这些内存空间。可以。程序员可以手动执行System.gc()，通知GC运行，但是Java语言规范并不保证GC一定会执行。
 
-### 集合框架
-
-![](http://img.blog.csdn.net/20130430102251761)
 
 
-
-
-### string，stringBuilder,StringBuffer
-### 二叉树遍历
-### Arrays.sort实现原理和Collection实现原理
-### Object常用方法和equal和hashCode
-### 什么是多态（我举得例子：beanFactory）
-### session的实现机制
