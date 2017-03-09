@@ -7,7 +7,7 @@
 
 ![](http://images.cnitblog.com/i/532548/201404/262238192165666.jpg)
 
-![](http://blog.tingyun.com/dynamic/transitionResourcePath?key=image/forumImage20160407110518442.png&filename=4.66.png)
+![](http://i.imgur.com/mkBAWS5.png)
 
 
 [Java Collections Framework（JAVA集合框架）中的常用集合实现简介](http://blog.tingyun.com/web/article/detail/396)
