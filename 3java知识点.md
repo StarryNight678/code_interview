@@ -92,6 +92,52 @@ after return
 
 java调试工具
 
+## [探索 ConcurrentHashMap 高并发性的实现机制](https://www.ibm.com/developerworks/cn/java/java-lo-concurrenthashmap/)
+
+ConcurrentHashMap 中不允许用 null 作为映射值
+
+
+插入三个节点后桶的结构示意图
+
+![](https://www.ibm.com/developerworks/cn/java/java-lo-concurrenthashmap/image002.jpg)
+
+插入三个节点后 Segment 的结构示意图：
+
+![](https://www.ibm.com/developerworks/cn/java/java-lo-concurrenthashmap/image004.jpg)
+
+ConcurrentHashMap 的结构示意图：
+
+![](https://www.ibm.com/developerworks/cn/java/java-lo-concurrenthashmap/image005.jpg)
+
+用分离锁实现多个线程间的并发写操作
+
+- put操作
+
+加锁，这里是锁定某个 Segment 对象而非整个 ConcurrentHashMap 
+
+
+注意：这里的加锁操作是针对（键的 hash 值对应的）某个具体的 Segment，锁定的是该 Segment 而不是整个 ConcurrentHashMap。因为插入键 / 值对操作只是在这个 Segment 包含的某个桶中完成，不需要锁定整个ConcurrentHashMap。此时，其他写线程对另外 15 个Segment 的加锁并不会因为当前线程对这个 Segment 的加锁而阻塞。同时，所有读线程几乎不会因本线程的加锁而阻塞（除非读线程刚好读到这个 Segment 中某个 HashEntry 的 value 域的值为 null，此时需要加锁后重新读取该值）。
+相比较于 HashTable 和由同步包装器包装的 HashMap每次只能有一个线程执行读或写操作，ConcurrentHashMap 在并发访问性能上有了质的提高。在理想状态下，ConcurrentHashMap 可以支持 16 个线程执行并发写操作（如果并发级别设置为 16），及任意数量线程的读操作。
+
+用 HashEntery 对象的不变性来降低读操作对加锁的需求
+在代码清单“HashEntry 类的定义”中我们可以看到，HashEntry 中的 key，hash，next 都声明为 final 型。这意味着，不能把节点添加到链接的中间和尾部，也不能在链接的中间和尾部删除节点。这个特性可以保证：在访问某个节点时，这个节点之后的链接不会被改变。这个特性可以大大降低处理链表时的复杂性。
+同时，HashEntry 类的 value 域被声明为 Volatile 型，Java 的内存模型可以保证：某个写线程对 value 域的写入马上可以被后续的某个读线程“看”到。在 ConcurrentHashMap 中，不允许用 unll 作为键和值，当读线程读到某个 HashEntry 的 value 域的值为 null 时，便知道产生了冲突——发生了重排序现象，需要加锁后重新读入这个 value 值。这些特性互相配合，使得读线程即使在不加锁状态下，也能正确访问 ConcurrentHashMap。
+
+
+这个特性和前面介绍的 HashEntry 对象的不变性相结合，使得在 ConcurrentHashMap 中，读线程在读取散列表时，基本不需要加锁就能成功获得需要的值。这两个特性相配合，不仅减少了请求同一个锁的频率（读操作一般不需要加锁就能够成功获得值），也减少了持有同一个锁的时间（只有读到 value 域的值为 null 时 , 读线程才需要加锁后重读）。
+
+
+- ConcurrentHashMap 实现高并发的总结
+
+基于通常情形而优化
+在实际的应用中，散列表一般的应用场景是：除了少数插入操作和删除操作外，绝大多数都是读取操作，而且读操作在大多数时候都是成功的。正是基于这个前提，ConcurrentHashMap 针对读操作做了大量的优化。通过 HashEntry 对象的不变性和用 volatile 型变量协调线程间的内存可见性，使得 大多数时候，读操作不需要加锁就可以正确获得值。这个特性使得 ConcurrentHashMap 的并发性能在分离锁的基础上又有了近一步的提高。
+
+ConcurrentHashMap 的高并发性主要来自于三个方面：
+
+1. 用分离锁实现多个线程间的更深层次的共享访问。
+1. 用 HashEntery 对象的不变性来降低执行读操作的线程在遍历链表期间对加锁的需求。
+1. 通过对同一个 Volatile 变量的写 / 读访问，协调不同线程间读 / 写操作的内存可见性。
+
 
 ## 
 
