@@ -1,0 +1,1308 @@
+<!DOCTYPE html><html><head><meta charset="utf-8"><style>body {
+  width: 45em;
+  border: 1px solid #ddd;
+  outline: 1300px solid #fff;
+  margin: 16px auto;
+}
+
+body .markdown-body
+{
+  padding: 30px;
+}
+
+@font-face {
+  font-family: fontawesome-mini;
+  src: url(data:font/woff;charset=utf-8;base64,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) format('woff');
+}
+
+@font-face {
+  font-family: octicons-anchor;
+  src: url(data:font/woff;charset=utf-8;base64,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) format('woff');
+}
+
+.markdown-body {
+  font-family: sans-serif;
+  -ms-text-size-adjust: 100%;
+  -webkit-text-size-adjust: 100%;
+  color: #333333;
+  overflow: hidden;
+  font-family: "Helvetica Neue", Helvetica, "Segoe UI", Arial, freesans, sans-serif;
+  font-size: 16px;
+  line-height: 1.6;
+  word-wrap: break-word;
+}
+
+.markdown-body a {
+  background: transparent;
+}
+
+.markdown-body a:active,
+.markdown-body a:hover {
+  outline: 0;
+}
+
+.markdown-body b,
+.markdown-body strong {
+  font-weight: bold;
+}
+
+.markdown-body mark {
+  background: #ff0;
+  color: #000;
+  font-style: italic;
+  font-weight: bold;
+}
+
+.markdown-body sub,
+.markdown-body sup {
+  font-size: 75%;
+  line-height: 0;
+  position: relative;
+  vertical-align: baseline;
+}
+.markdown-body sup {
+  top: -0.5em;
+}
+.markdown-body sub {
+  bottom: -0.25em;
+}
+
+.markdown-body h1 {
+  font-size: 2em;
+  margin: 0.67em 0;
+}
+
+.markdown-body img {
+  border: 0;
+}
+
+.markdown-body hr {
+  -moz-box-sizing: content-box;
+  box-sizing: content-box;
+  height: 0;
+}
+
+.markdown-body pre {
+  overflow: auto;
+}
+
+.markdown-body code,
+.markdown-body kbd,
+.markdown-body pre,
+.markdown-body samp {
+  font-family: monospace, monospace;
+  font-size: 1em;
+}
+
+.markdown-body input {
+  color: inherit;
+  font: inherit;
+  margin: 0;
+}
+
+.markdown-body html input[disabled] {
+  cursor: default;
+}
+
+.markdown-body input {
+  line-height: normal;
+}
+
+.markdown-body input[type="checkbox"] {
+  box-sizing: border-box;
+  padding: 0;
+}
+
+.markdown-body table {
+  border-collapse: collapse;
+  border-spacing: 0;
+}
+
+.markdown-body td,
+.markdown-body th {
+  padding: 0;
+}
+
+.markdown-body .codehilitetable {
+  border: 0;
+  border-spacing: 0;
+}
+
+.markdown-body .codehilitetable tr {
+  border: 0;
+}
+
+.markdown-body .codehilitetable pre,
+.markdown-body .codehilitetable div.codehilite {
+  margin: 0;
+}
+
+.markdown-body .linenos,
+.markdown-body .code,
+.markdown-body .codehilitetable td {
+  border: 0;
+  padding: 0;
+}
+
+.markdown-body td:not(.linenos) .linenodiv {
+  padding: 0 !important;
+}
+
+.markdown-body .code {
+  width: 100%;
+}
+
+.markdown-body .linenos div pre,
+.markdown-body .linenodiv pre,
+.markdown-body .linenodiv {
+  border: 0;
+  -webkit-border-radius: 0;
+  -moz-border-radius: 0;
+  border-radius: 0;
+  -webkit-border-top-left-radius: 3px;
+  -webkit-border-bottom-left-radius: 3px;
+  -moz-border-radius-topleft: 3px;
+  -moz-border-radius-bottomleft: 3px;
+  border-top-left-radius: 3px;
+  border-bottom-left-radius: 3px;
+}
+
+.markdown-body .code div pre,
+.markdown-body .code div {
+  border: 0;
+  -webkit-border-radius: 0;
+  -moz-border-radius: 0;
+  border-radius: 0;
+  -webkit-border-top-right-radius: 3px;
+  -webkit-border-bottom-right-radius: 3px;
+  -moz-border-radius-topright: 3px;
+  -moz-border-radius-bottomright: 3px;
+  border-top-right-radius: 3px;
+  border-bottom-right-radius: 3px;
+}
+
+.markdown-body * {
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+}
+
+.markdown-body input {
+  font: 13px Helvetica, arial, freesans, clean, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol";
+  line-height: 1.4;
+}
+
+.markdown-body a {
+  color: #4183c4;
+  text-decoration: none;
+}
+
+.markdown-body a:hover,
+.markdown-body a:focus,
+.markdown-body a:active {
+  text-decoration: underline;
+}
+
+.markdown-body hr {
+  height: 0;
+  margin: 15px 0;
+  overflow: hidden;
+  background: transparent;
+  border: 0;
+  border-bottom: 1px solid #ddd;
+}
+
+.markdown-body hr:before,
+.markdown-body hr:after {
+  display: table;
+  content: " ";
+}
+
+.markdown-body hr:after {
+  clear: both;
+}
+
+.markdown-body h1,
+.markdown-body h2,
+.markdown-body h3,
+.markdown-body h4,
+.markdown-body h5,
+.markdown-body h6 {
+  margin-top: 15px;
+  margin-bottom: 15px;
+  line-height: 1.1;
+}
+
+.markdown-body h1 {
+  font-size: 30px;
+}
+
+.markdown-body h2 {
+  font-size: 21px;
+}
+
+.markdown-body h3 {
+  font-size: 16px;
+}
+
+.markdown-body h4 {
+  font-size: 14px;
+}
+
+.markdown-body h5 {
+  font-size: 12px;
+}
+
+.markdown-body h6 {
+  font-size: 11px;
+}
+
+.markdown-body blockquote {
+  margin: 0;
+}
+
+.markdown-body ul,
+.markdown-body ol {
+  padding: 0;
+  margin-top: 0;
+  margin-bottom: 0;
+}
+
+.markdown-body ol ol,
+.markdown-body ul ol {
+  list-style-type: lower-roman;
+}
+
+.markdown-body ul ul ol,
+.markdown-body ul ol ol,
+.markdown-body ol ul ol,
+.markdown-body ol ol ol {
+  list-style-type: lower-alpha;
+}
+
+.markdown-body dd {
+  margin-left: 0;
+}
+
+.markdown-body code,
+.markdown-body pre,
+.markdown-body samp {
+  font-family: Consolas, "Liberation Mono", Menlo, Courier, monospace;
+  font-size: 12px;
+}
+
+.markdown-body pre {
+  margin-top: 0;
+  margin-bottom: 0;
+}
+
+.markdown-body kbd {
+  background-color: #e7e7e7;
+  background-image: -moz-linear-gradient(#fefefe, #e7e7e7);
+  background-image: -webkit-linear-gradient(#fefefe, #e7e7e7);
+  background-image: linear-gradient(#fefefe, #e7e7e7);
+  background-repeat: repeat-x;
+  border-radius: 2px;
+  border: 1px solid #cfcfcf;
+  color: #000;
+  padding: 3px 5px;
+  line-height: 10px;
+  font: 11px Consolas, "Liberation Mono", Menlo, Courier, monospace;
+  display: inline-block;
+}
+
+.markdown-body>*:first-child {
+  margin-top: 0 !important;
+}
+
+.markdown-body>*:last-child {
+  margin-bottom: 0 !important;
+}
+
+.markdown-body .headeranchor-link {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  display: block;
+  padding-right: 6px;
+  padding-left: 30px;
+  margin-left: -30px;
+}
+
+.markdown-body .headeranchor-link:focus {
+  outline: none;
+}
+
+.markdown-body h1,
+.markdown-body h2,
+.markdown-body h3,
+.markdown-body h4,
+.markdown-body h5,
+.markdown-body h6 {
+  position: relative;
+  margin-top: 1em;
+  margin-bottom: 16px;
+  font-weight: bold;
+  line-height: 1.4;
+}
+
+.markdown-body h1 .headeranchor,
+.markdown-body h2 .headeranchor,
+.markdown-body h3 .headeranchor,
+.markdown-body h4 .headeranchor,
+.markdown-body h5 .headeranchor,
+.markdown-body h6 .headeranchor {
+  display: none;
+  color: #000;
+  vertical-align: middle;
+}
+
+.markdown-body h1:hover .headeranchor-link,
+.markdown-body h2:hover .headeranchor-link,
+.markdown-body h3:hover .headeranchor-link,
+.markdown-body h4:hover .headeranchor-link,
+.markdown-body h5:hover .headeranchor-link,
+.markdown-body h6:hover .headeranchor-link {
+  height: 1em;
+  padding-left: 8px;
+  margin-left: -30px;
+  line-height: 1;
+  text-decoration: none;
+}
+
+.markdown-body h1:hover .headeranchor-link .headeranchor,
+.markdown-body h2:hover .headeranchor-link .headeranchor,
+.markdown-body h3:hover .headeranchor-link .headeranchor,
+.markdown-body h4:hover .headeranchor-link .headeranchor,
+.markdown-body h5:hover .headeranchor-link .headeranchor,
+.markdown-body h6:hover .headeranchor-link .headeranchor {
+  display: inline-block;
+}
+
+.markdown-body h1 {
+  padding-bottom: 0.3em;
+  font-size: 2.25em;
+  line-height: 1.2;
+  border-bottom: 1px solid #eee;
+}
+
+.markdown-body h2 {
+  padding-bottom: 0.3em;
+  font-size: 1.75em;
+  line-height: 1.225;
+  border-bottom: 1px solid #eee;
+}
+
+.markdown-body h3 {
+  font-size: 1.5em;
+  line-height: 1.43;
+}
+
+.markdown-body h4 {
+  font-size: 1.25em;
+}
+
+.markdown-body h5 {
+  font-size: 1em;
+}
+
+.markdown-body h6 {
+  font-size: 1em;
+  color: #777;
+}
+
+.markdown-body p,
+.markdown-body blockquote,
+.markdown-body ul,
+.markdown-body ol,
+.markdown-body dl,
+.markdown-body table,
+.markdown-body pre,
+.markdown-body .admonition {
+  margin-top: 0;
+  margin-bottom: 16px;
+}
+
+.markdown-body hr {
+  height: 4px;
+  padding: 0;
+  margin: 16px 0;
+  background-color: #e7e7e7;
+  border: 0 none;
+}
+
+.markdown-body ul,
+.markdown-body ol {
+  padding-left: 2em;
+}
+
+.markdown-body ul ul,
+.markdown-body ul ol,
+.markdown-body ol ol,
+.markdown-body ol ul {
+  margin-top: 0;
+  margin-bottom: 0;
+}
+
+.markdown-body li>p {
+  margin-top: 16px;
+}
+
+.markdown-body dl {
+  padding: 0;
+}
+
+.markdown-body dl dt {
+  padding: 0;
+  margin-top: 16px;
+  font-size: 1em;
+  font-style: italic;
+  font-weight: bold;
+}
+
+.markdown-body dl dd {
+  padding: 0 16px;
+  margin-bottom: 16px;
+}
+
+.markdown-body blockquote {
+  padding: 0 15px;
+  color: #777;
+  border-left: 4px solid #ddd;
+}
+
+.markdown-body blockquote>:first-child {
+  margin-top: 0;
+}
+
+.markdown-body blockquote>:last-child {
+  margin-bottom: 0;
+}
+
+.markdown-body table {
+  display: block;
+  width: 100%;
+  overflow: auto;
+  word-break: normal;
+  word-break: keep-all;
+}
+
+.markdown-body table th {
+  font-weight: bold;
+}
+
+.markdown-body table th,
+.markdown-body table td {
+  padding: 6px 13px;
+  border: 1px solid #ddd;
+}
+
+.markdown-body table tr {
+  background-color: #fff;
+  border-top: 1px solid #ccc;
+}
+
+.markdown-body table tr:nth-child(2n) {
+  background-color: #f8f8f8;
+}
+
+.markdown-body img {
+  max-width: 100%;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+}
+
+.markdown-body code,
+.markdown-body samp {
+  padding: 0;
+  padding-top: 0.2em;
+  padding-bottom: 0.2em;
+  margin: 0;
+  font-size: 85%;
+  background-color: rgba(0,0,0,0.04);
+  border-radius: 3px;
+}
+
+.markdown-body code:before,
+.markdown-body code:after {
+  letter-spacing: -0.2em;
+  content: "\00a0";
+}
+
+.markdown-body pre>code {
+  padding: 0;
+  margin: 0;
+  font-size: 100%;
+  word-break: normal;
+  white-space: pre;
+  background: transparent;
+  border: 0;
+}
+
+.markdown-body .codehilite {
+  margin-bottom: 16px;
+}
+
+.markdown-body .codehilite pre,
+.markdown-body pre {
+  padding: 16px;
+  overflow: auto;
+  font-size: 85%;
+  line-height: 1.45;
+  background-color: #f7f7f7;
+  border-radius: 3px;
+}
+
+.markdown-body .codehilite pre {
+  margin-bottom: 0;
+  word-break: normal;
+}
+
+.markdown-body pre {
+  word-wrap: normal;
+}
+
+.markdown-body pre code {
+  display: inline;
+  max-width: initial;
+  padding: 0;
+  margin: 0;
+  overflow: initial;
+  line-height: inherit;
+  word-wrap: normal;
+  background-color: transparent;
+  border: 0;
+}
+
+.markdown-body pre code:before,
+.markdown-body pre code:after {
+  content: normal;
+}
+
+/* Admonition */
+.markdown-body .admonition {
+  -webkit-border-radius: 3px;
+  -moz-border-radius: 3px;
+  position: relative;
+  border-radius: 3px;
+  border: 1px solid #e0e0e0;
+  border-left: 6px solid #333;
+  padding: 10px 10px 10px 30px;
+}
+
+.markdown-body .admonition table {
+  color: #333;
+}
+
+.markdown-body .admonition p {
+  padding: 0;
+}
+
+.markdown-body .admonition-title {
+  font-weight: bold;
+  margin: 0;
+}
+
+.markdown-body .admonition>.admonition-title {
+  color: #333;
+}
+
+.markdown-body .attention>.admonition-title {
+  color: #a6d796;
+}
+
+.markdown-body .caution>.admonition-title {
+  color: #d7a796;
+}
+
+.markdown-body .hint>.admonition-title {
+  color: #96c6d7;
+}
+
+.markdown-body .danger>.admonition-title {
+  color: #c25f77;
+}
+
+.markdown-body .question>.admonition-title {
+  color: #96a6d7;
+}
+
+.markdown-body .note>.admonition-title {
+  color: #d7c896;
+}
+
+.markdown-body .admonition:before,
+.markdown-body .attention:before,
+.markdown-body .caution:before,
+.markdown-body .hint:before,
+.markdown-body .danger:before,
+.markdown-body .question:before,
+.markdown-body .note:before {
+  font: normal normal 16px fontawesome-mini;
+  -moz-osx-font-smoothing: grayscale;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+  line-height: 1.5;
+  color: #333;
+  position: absolute;
+  left: 0;
+  top: 0;
+  padding-top: 10px;
+  padding-left: 10px;
+}
+
+.markdown-body .admonition:before {
+  content: "\f056\00a0";
+  color: 333;
+}
+
+.markdown-body .attention:before {
+  content: "\f058\00a0";
+  color: #a6d796;
+}
+
+.markdown-body .caution:before {
+  content: "\f06a\00a0";
+  color: #d7a796;
+}
+
+.markdown-body .hint:before {
+  content: "\f05a\00a0";
+  color: #96c6d7;
+}
+
+.markdown-body .danger:before {
+  content: "\f057\00a0";
+  color: #c25f77;
+}
+
+.markdown-body .question:before {
+  content: "\f059\00a0";
+  color: #96a6d7;
+}
+
+.markdown-body .note:before {
+  content: "\f040\00a0";
+  color: #d7c896;
+}
+
+.markdown-body .admonition::after {
+  content: normal;
+}
+
+.markdown-body .attention {
+  border-left: 6px solid #a6d796;
+}
+
+.markdown-body .caution {
+  border-left: 6px solid #d7a796;
+}
+
+.markdown-body .hint {
+  border-left: 6px solid #96c6d7;
+}
+
+.markdown-body .danger {
+  border-left: 6px solid #c25f77;
+}
+
+.markdown-body .question {
+  border-left: 6px solid #96a6d7;
+}
+
+.markdown-body .note {
+  border-left: 6px solid #d7c896;
+}
+
+.markdown-body .admonition>*:first-child {
+  margin-top: 0 !important;
+}
+
+.markdown-body .admonition>*:last-child {
+  margin-bottom: 0 !important;
+}
+
+/* progress bar*/
+.markdown-body .progress {
+  display: block;
+  width: 300px;
+  margin: 10px 0;
+  height: 24px;
+  -webkit-border-radius: 3px;
+  -moz-border-radius: 3px;
+  border-radius: 3px;
+  background-color: #ededed;
+  position: relative;
+  box-shadow: inset -1px 1px 3px rgba(0, 0, 0, .1);
+}
+
+.markdown-body .progress-label {
+  position: absolute;
+  text-align: center;
+  font-weight: bold;
+  width: 100%; margin: 0;
+  line-height: 24px;
+  color: #333;
+  text-shadow: 1px 1px 0 #fefefe, -1px -1px 0 #fefefe, -1px 1px 0 #fefefe, 1px -1px 0 #fefefe, 0 1px 0 #fefefe, 0 -1px 0 #fefefe, 1px 0 0 #fefefe, -1px 0 0 #fefefe, 1px 1px 2px #000;
+  -webkit-font-smoothing: antialiased !important;
+  white-space: nowrap;
+  overflow: hidden;
+}
+
+.markdown-body .progress-bar {
+  height: 24px;
+  float: left;
+  -webkit-border-radius: 3px;
+  -moz-border-radius: 3px;
+  border-radius: 3px;
+  background-color: #96c6d7;
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, .5), inset 0 -1px 0 rgba(0, 0, 0, .1);
+  background-size: 30px 30px;
+  background-image: -webkit-linear-gradient(
+    135deg, rgba(255, 255, 255, .4) 27%,
+    transparent 27%,
+    transparent 52%, rgba(255, 255, 255, .4) 52%,
+    rgba(255, 255, 255, .4) 77%,
+    transparent 77%, transparent
+  );
+  background-image: -moz-linear-gradient(
+    135deg,
+    rgba(255, 255, 255, .4) 27%, transparent 27%,
+    transparent 52%, rgba(255, 255, 255, .4) 52%,
+    rgba(255, 255, 255, .4) 77%, transparent 77%,
+    transparent
+  );
+  background-image: -ms-linear-gradient(
+    135deg,
+    rgba(255, 255, 255, .4) 27%, transparent 27%,
+    transparent 52%, rgba(255, 255, 255, .4) 52%,
+    rgba(255, 255, 255, .4) 77%, transparent 77%,
+    transparent
+  );
+  background-image: -o-linear-gradient(
+    135deg,
+    rgba(255, 255, 255, .4) 27%, transparent 27%,
+    transparent 52%, rgba(255, 255, 255, .4) 52%,
+    rgba(255, 255, 255, .4) 77%, transparent 77%,
+    transparent
+  );
+  background-image: linear-gradient(
+    135deg,
+    rgba(255, 255, 255, .4) 27%, transparent 27%,
+    transparent 52%, rgba(255, 255, 255, .4) 52%,
+    rgba(255, 255, 255, .4) 77%, transparent 77%,
+    transparent
+  );
+}
+
+.markdown-body .progress-100plus .progress-bar {
+  background-color: #a6d796;
+}
+
+.markdown-body .progress-80plus .progress-bar {
+  background-color: #c6d796;
+}
+
+.markdown-body .progress-60plus .progress-bar {
+  background-color: #d7c896;
+}
+
+.markdown-body .progress-40plus .progress-bar {
+  background-color: #d7a796;
+}
+
+.markdown-body .progress-20plus .progress-bar {
+  background-color: #d796a6;
+}
+
+.markdown-body .progress-0plus .progress-bar {
+  background-color: #c25f77;
+}
+
+.markdown-body .candystripe-animate .progress-bar{
+  -webkit-animation: animate-stripes 3s linear infinite;
+  -moz-animation: animate-stripes 3s linear infinite;
+  animation: animate-stripes 3s linear infinite;
+}
+
+@-webkit-keyframes animate-stripes {
+  0% {
+    background-position: 0 0;
+  }
+
+  100% {
+    background-position: 60px 0;
+  }
+}
+
+@-moz-keyframes animate-stripes {
+  0% {
+    background-position: 0 0;
+  }
+
+  100% {
+    background-position: 60px 0;
+  }
+}
+
+@keyframes animate-stripes {
+  0% {
+    background-position: 0 0;
+  }
+
+  100% {
+    background-position: 60px 0;
+  }
+}
+
+.markdown-body .gloss .progress-bar {
+  box-shadow:
+    inset 0 4px 12px rgba(255, 255, 255, .7),
+    inset 0 -12px 0 rgba(0, 0, 0, .05);
+}
+
+/* Multimarkdown Critic Blocks */
+.markdown-body .critic_mark {
+  background: #ff0;
+}
+
+.markdown-body .critic_delete {
+  color: #c82829;
+  text-decoration: line-through;
+}
+
+.markdown-body .critic_insert {
+  color: #718c00 ;
+  text-decoration: underline;
+}
+
+.markdown-body .critic_comment {
+  color: #8e908c;
+  font-style: italic;
+}
+
+.markdown-body .headeranchor {
+  font: normal normal 16px octicons-anchor;
+  line-height: 1;
+  display: inline-block;
+  text-decoration: none;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+}
+
+.headeranchor:before {
+  content: '\f05c';
+}
+
+.markdown-body .task-list-item {
+  list-style-type: none;
+}
+
+.markdown-body .task-list-item+.task-list-item {
+  margin-top: 3px;
+}
+
+.markdown-body .task-list-item input {
+  margin: 0 4px 0.25em -20px;
+  vertical-align: middle;
+}
+
+/* Media */
+@media only screen and (min-width: 480px) {
+  .markdown-body {
+    font-size:14px;
+  }
+}
+
+@media only screen and (min-width: 768px) {
+  .markdown-body {
+    font-size:16px;
+  }
+}
+
+@media print {
+  .markdown-body * {
+    background: transparent !important;
+    color: black !important;
+    filter:none !important;
+    -ms-filter: none !important;
+  }
+
+  .markdown-body {
+    font-size:12pt;
+    max-width:100%;
+    outline:none;
+    border: 0;
+  }
+
+  .markdown-body a,
+  .markdown-body a:visited {
+    text-decoration: underline;
+  }
+
+  .markdown-body .headeranchor-link {
+    display: none;
+  }
+
+  .markdown-body a[href]:after {
+    content: " (" attr(href) ")";
+  }
+
+  .markdown-body abbr[title]:after {
+    content: " (" attr(title) ")";
+  }
+
+  .markdown-body .ir a:after,
+  .markdown-body a[href^="javascript:"]:after,
+  .markdown-body a[href^="#"]:after {
+    content: "";
+  }
+
+  .markdown-body pre {
+    white-space: pre;
+    white-space: pre-wrap;
+    word-wrap: break-word;
+  }
+
+  .markdown-body pre,
+  .markdown-body blockquote {
+    border: 1px solid #999;
+    padding-right: 1em;
+    page-break-inside: avoid;
+  }
+
+  .markdown-body .progress,
+  .markdown-body .progress-bar {
+    -moz-box-shadow: none;
+    -webkit-box-shadow: none;
+    box-shadow: none;
+  }
+
+  .markdown-body .progress {
+    border: 1px solid #ddd;
+  }
+
+  .markdown-body .progress-bar {
+    height: 22px;
+    border-right: 1px solid #ddd;
+  }
+
+  .markdown-body tr,
+  .markdown-body img {
+    page-break-inside: avoid;
+  }
+
+  .markdown-body img {
+    max-width: 100% !important;
+  }
+
+  .markdown-body p,
+  .markdown-body h2,
+  .markdown-body h3 {
+    orphans: 3;
+    widows: 3;
+  }
+
+  .markdown-body h2,
+  .markdown-body h3 {
+    page-break-after: avoid;
+  }
+}
+</style><title>5设计模式</title></head><body><article class="markdown-body"><h1 id="java"><a name="user-content-java" href="#java" class="headeranchor-link" aria-hidden="true"><span class="headeranchor"></span></a>Java设计模式</h1>
+<h2 id="_1"><a name="user-content-_1" href="#_1" class="headeranchor-link" aria-hidden="true"><span class="headeranchor"></span></a>图书</h2>
+<ol>
+<li>《大话设计模式》（程杰）</li>
+<li>《设计模式》（刘伟，清华大学出版社）</li>
+<li>强烈推荐《设计模式之禅》</li>
+</ol>
+<h2 id="_2"><a name="user-content-_2" href="#_2" class="headeranchor-link" aria-hidden="true"><span class="headeranchor"></span></a>看图书</h2>
+<p><img alt="" src="https://images-cn.ssl-images-amazon.com/images/I/51xb%2B7p9wTL._SY498_BO1,204,203,200_.jpg" /></p>
+<h2 id="_3"><a name="user-content-_3" href="#_3" class="headeranchor-link" aria-hidden="true"><span class="headeranchor"></span></a>学习<a href="http://blog.csdn.net/lovelion/article/details/17517213">史上最全设计模式导学目录（完整版）</a></h2>
+<p>基础知识</p>
+<p>设计模式概述<br />
+从招式与内功谈起——设计模式概述（一）：设计模式从何而来？<br />
+从招式与内功谈起——设计模式概述（二）：设计模式是什么？<br />
+从招式与内功谈起——设计模式概述（三）：设计模式有什么用？附：个人观点</p>
+<p>这三个设计原则会同时出现，开闭原则是目标，里氏代换原则是基础，依赖倒转原则是手段，它们相辅相成，相互补充，目标一致</p>
+<ol>
+<li>单一职责原则  一个类只负责一个功能领域中的相应职责</li>
+<li>开闭原则 软件实体应对扩展开放，而对修改关闭(抽象化是开闭原则的关键)<br />
+    系统的抽象层，再通过具体类来进行扩展。如果需要修改系统的行为，无须对抽象层进行任何改动，只需要增加新的具体类来实现新的业务功能即可，实现在不修改已有代码的基础上扩展系统的功能，达到开闭原则的要求。</li>
+<li>
+<p>里氏代换原则 所有引用基类对象的地方能够透明地使用其子类的对象<br />
+    在软件中将一个基类对象替换成它的子类对象，程序将不会产生任何错误和异常，反过来则不成立，如果一个软件实体使用的是一个子类对象的话，那么它不一定能够使用基类对象。</p>
+<p>因此在程序中尽量使用基类类型来对对象进行定义，而在运行时再确定其子类类型，用子类对象来替换父类对象。</p>
+<p>里氏代换原则是实现开闭原则的重要方式之一。</p>
+</li>
+<li>
+<p>依赖倒转原则 抽象不应该依赖于细节，细节应该依赖于抽象<br />
+    要针对接口编程，而不是针对实现编程。</p>
+</li>
+<li>
+<p>接口隔离原则 使用多个专门的接口，而不使用单一的总接口<br />
+    即客户端不应该依赖那些它不需要的接口。</p>
+<p>在使用接口隔离原则时，我们需要注意控制接口的粒度，接口不能太小，如果太小会导致系统中接口泛滥，不利于维护；接口也不能太大，太大的接口将违背接口隔离原则，灵活性较差，使用起来很不方便。一般而言，接口中仅包含为某一类用户定制的方法即可，不应该强迫客户依赖于那些它们不用的方法。</p>
+</li>
+<li>
+<p>合成复用原则 尽量使用对象组合，而不是继承来达到复用的目的<br />
+    组合降低耦合度</p>
+</li>
+<li>迪米特法则 一个软件实体应当尽可能少地与其他实体发生相互作用<br />
+    迪米特法则可降低系统的耦合度，使类与类之间保持松散的耦合关系。</li>
+</ol>
+<h1 id="_4"><a name="user-content-_4" href="#_4" class="headeranchor-link" aria-hidden="true"><span class="headeranchor"></span></a>六个创建型模式</h1>
+<p>在所有的工厂模式中，我们都强调一点：两个类A和B之间的关系应该<strong>仅仅是A创建B或是A使用B，而不能两种关系都有。</strong></p>
+<h2 id="-simple-factory-pattern"><a name="user-content--simple-factory-pattern" href="#-simple-factory-pattern" class="headeranchor-link" aria-hidden="true"><span class="headeranchor"></span></a>简单工厂模式-Simple Factory Pattern【学习难度：★★☆☆☆，使用频率：★★★☆☆】</h2>
+<p>简单工厂模式(Simple Factory Pattern)：定义一个工厂类，它可以根据参数的不同返回不同类的实例，被创建的实例通常都具有共同的父类。因为在简单工厂模式中用于创建实例的方法是静态(static)方法，因此简单工厂模式又被称为静态工厂方法(Static Factory Method)模式，它属于类创建型模式。</p>
+<p>工厂三兄弟之简单工厂模式（一）：图表库的设计</p>
+<p>工厂三兄弟之简单工厂模式（二）：简单工厂模式概述</p>
+<p>工厂三兄弟之简单工厂模式（三）：图表库的简单工厂模式解决方案</p>
+<p>工厂三兄弟之简单工厂模式（四）：图表库解决方案的改进，简单工厂模式的简化，简单工厂模式总结</p>
+<p>简单工厂模式的主要优点如下：</p>
+<p>(1) 工厂类包含必要的判断逻辑，可以决定在什么时候创建哪一个产品类的实例，客户端可以免除直接创建产品对象的职责，而仅仅“消费”产品，简单工厂模式实现了对象创建和使用的分离。</p>
+<p>(2) 客户端无须知道所创建的具体产品类的类名，只需要知道具体产品类所对应的参数即可，对于一些复杂的类名，通过简单工厂模式可以在一定程度减少使用者的记忆量。</p>
+<p>(3) 通过引入配置文件，可以在不修改任何客户端代码的情况下更换和增加新的具体产品类，在一定程度上提高了系统的灵活性。</p>
+<p>简单工厂模式的主要缺点如下：</p>
+<p>(1) 由于工厂类集中了所有产品的创建逻辑，职责过重，一旦不能正常工作，整个系统都要受到影响。</p>
+<p>(2) 使用简单工厂模式势必会增加系统中类的个数（引入了新的工厂类），增加了系统的复杂度和理解难度。</p>
+<p>(3) 系统扩展困难，一旦添加新产品就不得不修改工厂逻辑，在产品类型较多时，有可能造成工厂逻辑过于复杂，不利于系统的扩展和维护。</p>
+<p>(4) 简单工厂模式由于使用了静态工厂方法，造成工厂角色无法形成基于继承的等级结构。</p>
+<p>简单工厂模式虽然简单，但存在一个很严重的问题。当系统中需要引入新产品时，由于静态工厂方法通过所传入参数的不同来创建不同的产品，这必定要修改工厂类的源代码，将违背“开闭原则”，如何实现增加新产品而不影响已有代码？工厂方法模式应运而生，本文将介绍第二种工厂模式——工厂方法模式。</p>
+<h2 id="-factory-method-pattern"><a name="user-content--factory-method-pattern" href="#-factory-method-pattern" class="headeranchor-link" aria-hidden="true"><span class="headeranchor"></span></a>工厂方法模式-Factory Method Pattern【学习难度：★★☆☆☆，使用频率：★★★★★】</h2>
+<p>工厂三兄弟之工厂方法模式（一）：日志记录器的设计</p>
+<p>工厂三兄弟之工厂方法模式（二）：工厂方法模式概述</p>
+<p>工厂三兄弟之工厂方法模式（三）：日志记录器的工厂方法模式解决方案，反射与配置文件</p>
+<p>工厂三兄弟之工厂方法模式（四）：重载的工厂方法，工厂方法的隐藏，工厂方法模式总结</p>
+<p>工厂方法模式(Factory Method Pattern)：定义一个用于创建对象的接口，让子类决定将哪一个类实例化。<br />
+工厂方法模式让一个类的实例化延迟到其子类。工厂方法模式又简称为工厂模式(Factory Pattern)<br />
+，又可称作<strong>虚拟构造器模式</strong>(Virtual Constructor Pattern)或多态工厂模式(Polymorphic Factory Pattern)。工厂方法模式是一种类创建型模式</p>
+<p><img alt="" src="http://img.blog.csdn.net/20130712102729562?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQvTG92ZUxpb24=/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/SouthEast" /></p>
+<ul>
+<li>工厂方法模式的主要优点如下：</li>
+</ul>
+<p>(1) 在工厂方法模式中，工厂方法用来创建客户所需要的产品，同时还向客户隐藏了哪种具体产品类将被实例化这一细节，用户只需要关心所需产品对应的工厂，无须关心创建细节，甚至无须知道具体产品类的类名。</p>
+<p>(2) 基于工厂角色和产品角色的多态性设计是工厂方法模式的关键。它能够让工厂可以自主确定创建何种产品对象，而如何创建这个对象的细节则完全封装在具体工厂内部。工厂方法模式之所以又被称为多态工厂模式，就正是因为所有的具体工厂类都具有同一抽象父类。</p>
+<p>(3) 使用工厂方法模式的另一个优点是在系统中加入新产品时，无须修改抽象工厂和抽象产品提供的接口，无须修改客户端，也无须修改其他的具体工厂和具体产品，而只要添加一个具体工厂和具体产品就可以了，这样，系统的可扩展性也就变得非常好，完全符合“开</p>
+<ul>
+<li>工厂方法模式的主要缺点如下：</li>
+</ul>
+<p>(1) 在添加新产品时，需要编写新的具体产品类，而且还要提供与之对应的具体工厂类，系统中类的个数将成对增加，在一定程度上增加了系统的复杂度，有更多的类需要编译和运行，会给系统带来一些额外的开销。</p>
+<p>(2) 由于考虑到系统的可扩展性，需要引入抽象层，在客户端代码中均使用抽象层进行定义，增加了系统的抽象性和理解难度，且在实现时可能需要用到DOM、反射等技术，增加了系统的实</p>
+<h2 id="-abstract-factory-pattern"><a name="user-content--abstract-factory-pattern" href="#-abstract-factory-pattern" class="headeranchor-link" aria-hidden="true"><span class="headeranchor"></span></a>抽象工厂模式-Abstract  Factory Pattern【学习难度：★★★★☆，使用频率：★★★★★】</h2>
+<p>工厂三兄弟之抽象工厂模式（一）：界面皮肤库的初始设计</p>
+<p>工厂三兄弟之抽象工厂模式（二）：产品等级结构与产品族</p>
+<p>工厂三兄弟之抽象工厂模式（三）：抽象工厂模式概述</p>
+<p>工厂三兄弟之抽象工厂模式（四）：界面皮肤库的抽象工厂模式解决方案</p>
+<p>工厂三兄弟之抽象工厂模式（五）：“开闭原则”的倾斜性，抽象工厂模式总结</p>
+<p>将一些相关的产品组成一个“产品族”，由同一个工厂来统一生产，这就是我们本文将要学习的抽象工厂模式的基本思想。</p>
+<p>抽象工厂模式与工厂方法模式最大的区别在于，工厂方法模式针对的是一个产品等级结构，而抽象工厂模式需要面对多个产品等级结构，一个工厂等级结构可以负责多个不同产品等级结构中的产品对象的创建。当一个工厂等级结构可以创建出分属于不同产品等级结构的一个产品族中的所有对象时，抽象工厂模式比工厂方法模式更为简单、更有效率。</p>
+<p>抽象工厂模式(Abstract Factory Pattern)：提供一个创建一系列相关或相互依赖对象的接口，而无须指定它们具体的类。抽象工厂模式又称为Kit模式，它是一种对象创建型模式。</p>
+<p>在抽象工厂模式中，增加新的产品族很方便，但是增加新的产品等级结构很麻烦，抽象工厂模式的这种性质称为“开闭原则”的倾斜性。</p>
+<p><strong>抽象工厂模式的主要优点如下：</strong></p>
+<p>(1) 抽象工厂模式隔离了具体类的生成，使得客户并不需要知道什么被创建。由于这种隔离，更换一个具体工厂就变得相对容易，所有的具体工厂都实现了抽象工厂中定义的那些公共接口，因此只需改变具体工厂的实例，就可以在某种程度上改变整个软件系统的行为。</p>
+<p>(2) 当一个产品族中的多个对象被设计成一起工作时，它能够保证客户端始终只使用同一个产品族中的对象。</p>
+<p>(3) 增加新的产品族很方便，无须修改已有系统，符合“开</p>
+<p><strong>抽象工厂模式的主要缺点如下：</strong></p>
+<p>增加新的产品等级结构麻烦，需要对原有系统进行较大的修改，甚至需要修改抽象层代码，<br />
+这显然会带来较大的不便，违背了“开闭原则”。</p>
+<h2 id="-singleton-pattern"><a name="user-content--singleton-pattern" href="#-singleton-pattern" class="headeranchor-link" aria-hidden="true"><span class="headeranchor"></span></a>单例模式-Singleton Pattern【学习难度：★☆☆☆☆，使用频率：★★★★☆】</h2>
+<p>确保对象的唯一性——单例模式 （一）：单例模式的动机，单例模式概述</p>
+<p>确保对象的唯一性——单例模式 （二）：负载均衡器的设计与实现</p>
+<p>确保对象的唯一性——单例模式 （三）：饿汉式单例与懒汉式单例的讨论</p>
+<p>确保对象的唯一性——单例模式 （四）：一种更好的单例实现方法（静态内部类）</p>
+<p>确保对象的唯一性——单例模式 （五）：单例模式总结</p>
+<p>Windows任务管理器．只能启动一个．</p>
+<p>单例模式：</p>
+<p>单例模式(Singleton Pattern)：确保某一个类只有一个实例，而且自行实例化并向整个系统提供这个实例，<br />
+这个类称为单例类，它提供全局访问的方法。单例模式是一种对象创建型模式。</p>
+<pre><code class="java">class TaskManager
+{
+     private static TaskManager tm = null;//静态类型的私有成员变量
+     private TaskManager() {……} //构造函数改为private，
+     public static TaskManager getInstance()//静态方法,创建实例
+     {
+        if (tm == null)
+        {
+            tm = new TaskManager();
+        }
+        return tm;
+    }
+   ……
+}
+</code></pre>
+
+<p>问题,当创建实例慢,多线程中,容易创建多个实例.</p>
+<p><strong>饿汉式单例与懒汉式单例的讨论</strong></p>
+<p>饿汉式单例类是实现起来最简单的单例类<br />
+定义静态变量的时候实例化单例类，因此在类加载的时候就已经创建了单例对象</p>
+<pre><code class="java">class EagerSingleton { 
+    private static final EagerSingleton instance = new EagerSingleton(); 
+    private EagerSingleton() { } 
+
+    public static EagerSingleton getInstance() {
+        return instance; 
+    }   
+}
+</code></pre>
+
+<p>在类加载时并不自行实例化，这种技术又称为延迟加载(Lazy Load)技术，即需要的时候再加载实例，<br />
+为了避免多个线程同时调用getInstance()方法，我们可以使用关键字<strong>synchronized，</strong></p>
+<p>**</p>
+<pre><code class="java">
+class LazySingleton { 
+    private static LazySingleton instance = null; 
+
+    private LazySingleton() { } 
+
+    synchronized public static LazySingleton getInstance() { 
+        if (instance == null) {
+            instance = new LazySingleton(); 
+        }
+        return instance; 
+    }
+}
+</code></pre>
+
+<pre><code class="java">
+</code></pre>
+
+<pre><code class="java">
+</code></pre>
+
+<pre><code class="java">
+</code></pre>
+
+<h2 id="-prototype-pattern"><a name="user-content--prototype-pattern" href="#-prototype-pattern" class="headeranchor-link" aria-hidden="true"><span class="headeranchor"></span></a>原型模式-Prototype Pattern【学习难度：★★★☆☆，使用频率：★★★☆☆】</h2>
+<p>对象的克隆——原型模式（一）：大同小异的工作周报，原型模式概述</p>
+<p>对象的克隆——原型模式（二）：工作周报的原型模式解决方案</p>
+<p>对象的克隆——原型模式（三）：带附件的周报【浅克隆，深克隆】</p>
+<p>对象的克隆——原型模式（四）：原型管理器的引入和实现，原型模式总结</p>
+<h2 id="-builder-pattern"><a name="user-content--builder-pattern" href="#-builder-pattern" class="headeranchor-link" aria-hidden="true"><span class="headeranchor"></span></a>建造者模式-Builder Pattern【学习难度：★★★★☆，使用频率：★★☆☆☆】</h2>
+<p>复杂对象的组装与创建——建造者模式（一）：游戏角色设计，建造者模式概述</p>
+<p>复杂对象的组装与创建——建造者模式（二）：游戏角色设计的建造者模式解决方案</p>
+<p>复杂对象的组装与创建——建造者模式（三）：关于Director的进一步讨论，建造者模式总结</p>
+<h1 id="_5"><a name="user-content-_5" href="#_5" class="headeranchor-link" aria-hidden="true"><span class="headeranchor"></span></a>七个结构型模式</h1>
+<p>适配器模式-Adapter Pattern【学习难度：★★☆☆☆，使用频率：★★★★☆】</p>
+<p>不兼容结构的协调——适配器模式（一）：没有源码的算法库，适配器模式概述</p>
+<p>不兼容结构的协调——适配器模式（二）：没有源码的算法库的适配器模式解决方案</p>
+<p>不兼容结构的协调——适配器模式（三）：类适配器，双向适配器</p>
+<p>不兼容结构的协调——适配器模式（四）：缺省适配器，适配器模式总结</p>
+<p>桥接模式-Bridge Pattern【学习难度：★★★☆☆，使用频率：★★★☆☆】</p>
+<p>处理多维度变化——桥接模式（一）：跨平台图像浏览系统</p>
+<p>处理多维度变化——桥接模式（二）：桥接模式概述</p>
+<p>处理多维度变化——桥接模式（三）：跨平台图像浏览系统的桥接模式解决方案</p>
+<p>处理多维度变化——桥接模式（四）：适配器模式与桥接模式的联用，桥接模式总结</p>
+<p>组合模式-Composite Pattern【学习难度：★★★☆☆，使用频率：★★★★☆】</p>
+<p>树形结构的处理——组合模式（一）：设计杀毒软件的框架结构</p>
+<p>树形结构的处理——组合模式（二）：组合模式概述</p>
+<p>树形结构的处理——组合模式（三）：杀毒软件的框架结构的组合模式解决方案</p>
+<p>树形结构的处理——组合模式（四）：透明组合模式与安全组合模式</p>
+<p>树形结构的处理——组合模式（五）：公司组织结构，组合模式总结</p>
+<p>装饰模式-Decorator Pattern【学习难度：★★★☆☆，使用频率：★★★☆☆】</p>
+<p>扩展系统功能——装饰模式（一）：图形界面构件库的设计</p>
+<p>扩展系统功能——装饰模式（二）：装饰模式概述</p>
+<p>扩展系统功能——装饰模式（三）：图形界面构件库的装饰模式解决方案</p>
+<p>扩展系统功能——装饰模式（四）：透明装饰模式与半透明装饰模式，装饰模式注意事项，装饰模式总结</p>
+<p>外观模式-Facade Pattern【学习难度：★☆☆☆☆，使用频率：★★★★★】</p>
+<p>深入浅出外观模式（一）：外观模式概述，外观模式结构与实现</p>
+<p>深入浅出外观模式（二）：外观模式应用实例（文件加密模块）</p>
+<p>深入浅出外观模式（三）：抽象外观类，外观模式效果与适用场景</p>
+<p>享元模式-Flyweight Pattern【学习难度：★★★★☆，使用频率：★☆☆☆☆】</p>
+<p>实现对象的复用——享元模式（一）：围棋棋子的设计，享元模式概述（上）</p>
+<p>实现对象的复用——享元模式（二）：享元模式概述（下）</p>
+<p>实现对象的复用——享元模式（三）：围棋棋子的享元模式解决方案</p>
+<p>实现对象的复用——享元模式（四）：带外部状态的围棋棋子解决方案</p>
+<p>实现对象的复用——享元模式（五）：单纯享元模式和复合享元模式，关于享元模式的几点补充，享元模式总结</p>
+<p>代理模式-Proxy Pattern【学习难度：★★★☆☆，使用频率：★★★★☆】</p>
+<p>代理模式（一）：代理模式概述，代理模式结构与实现</p>
+<p>代理模式（二）：代理模式应用实例（收费商务信息查询系统）</p>
+<p>代理模式（三）：远程代理，虚拟代理，缓冲代理</p>
+<p>代理模式（四）：代理模式效果与适用场景</p>
+<p>十一个行为型模式</p>
+<p>职责链模式-Chain of Responsibility Pattern【学习难度：★★★☆☆，使用频率：★★☆☆☆】</p>
+<p>请求的链式处理——职责链模式（一）：采购单的分级审批</p>
+<p>请求的链式处理——职责链模式（二）：职责链模式概述</p>
+<p>请求的链式处理——职责链模式（三）：采购单分级审批的职责链模式解决方案</p>
+<p>请求的链式处理——职责链模式（四）：纯与不纯的职责链模式，职责链模式总结</p>
+<p>命令模式-Command Pattern【学习难度：★★★☆☆，使用频率：★★★★☆】</p>
+<p>请求发送者与接收者解耦——命令模式（一）：自定义功能键，命令模式概述</p>
+<p>请求发送者与接收者解耦——命令模式（二）：自定义功能键的命令模式解决方案</p>
+<p>请求发送者与接收者解耦——命令模式（三）：命令队列的实现</p>
+<p>请求发送者与接收者解耦——命令模式（四）：撤销操作的简单实现</p>
+<p>请求发送者与接收者解耦——命令模式（五）：请求日志</p>
+<p>请求发送者与接收者解耦——命令模式（六）：宏命令，命令模式总结</p>
+<p>解释器模式-Interpreter Pattern【学习难度：★★★★★，使用频率：★☆☆☆☆】</p>
+<p>自定义语言的实现——解释器模式（一）：机器人控制程序</p>
+<p>自定义语言的实现——解释器模式（二）：文法规则和抽象语法树</p>
+<p>自定义语言的实现——解释器模式（三）：解释器模式概述</p>
+<p>自定义语言的实现——解释器模式（四）：机器人控制程序的解释器模式解决方案</p>
+<p>自定义语言的实现——解释器模式（五）：再谈Context的作用</p>
+<p>自定义语言的实现——解释器模式（六）：解释器模式总结</p>
+<p>迭代器模式-Iterator Pattern【学习难度：★★★☆☆，使用频率：★★★★★】</p>
+<p>遍历聚合对象中的元素——迭代器模式（一）：销售管理系统中数据的遍历</p>
+<p>遍历聚合对象中的元素——迭代器模式（二）：迭代器模式概述</p>
+<p>遍历聚合对象中的元素——迭代器模式（三）：销售管理系统中数据的遍历的迭代器模式解决方案</p>
+<p>遍历聚合对象中的元素——迭代器模式（四）：使用内部类实现迭代器</p>
+<p>遍历聚合对象中的元素——迭代器模式（五）：JDK内置迭代器的使用</p>
+<p>遍历聚合对象中的元素——迭代器模式（六）：迭代器模式总结</p>
+<p>中介者模式-Mediator Pattern【学习难度：★★★☆☆，使用频率：★★☆☆☆】</p>
+<p>协调多个对象之间的交互——中介者模式（一）：客户信息管理窗口的初始设计</p>
+<p>协调多个对象之间的交互——中介者模式（二）：中介者模式概述</p>
+<p>协调多个对象之间的交互——中介者模式（三）：客户信息管理窗口的中介者模式解决方案</p>
+<p>协调多个对象之间的交互——中介者模式（四）：中介者与同事类的扩展</p>
+<p>协调多个对象之间的交互——中介者模式（五）：中介者模式总结</p>
+<p>备忘录模式-Memento Pattern【学习难度：★★☆☆☆，使用频率：★★☆☆☆】</p>
+<p>撤销功能的实现——备忘录模式（一）：可悔棋的中国象棋</p>
+<p>撤销功能的实现——备忘录模式（二）：备忘录模式概述</p>
+<p>撤销功能的实现——备忘录模式（三）：中国象棋的备忘录模式解决方案</p>
+<p>撤销功能的实现——备忘录模式（四）：实现多次撤销</p>
+<p>撤销功能的实现——备忘录模式（五）：再谈备忘录的封装，备忘录模式总结</p>
+<p>观察者模式-Observer Pattern【学习难度：★★★☆☆，使用频率：★★★★★】</p>
+<p>对象间的联动——观察者模式（一）：多人联机对战游戏的设计</p>
+<p>对象间的联动——观察者模式（二）：观察者模式概述</p>
+<p>对象间的联动——观察者模式（三）：多人联机对战游戏的观察者模式解决方案</p>
+<p>对象间的联动——观察者模式（四）：JDK对观察者模式的支持</p>
+<p>对象间的联动——观察者模式（五）：观察者模式与Java事件处理</p>
+<p>对象间的联动——观察者模式（六）：观察者模式与MVC，观察者模式总结</p>
+<p>状态模式-State Pattern【学习难度：★★★☆☆，使用频率：★★★☆☆】</p>
+<p>处理对象的多种状态及其相互转换——状态模式（一）：银行系统中的账户类设计</p>
+<p>处理对象的多种状态及其相互转换——状态模式（二）：状态模式概述</p>
+<p>处理对象的多种状态及其相互转换——状态模式（三）：账户类的状态模式解决方案</p>
+<p>处理对象的多种状态及其相互转换——状态模式（四）：共享状态的实现</p>
+<p>处理对象的多种状态及其相互转换——状态模式（五）：使用环境类实现状态转换</p>
+<p>处理对象的多种状态及其相互转换——状态模式（六）：状态模式总结</p>
+<p>策略模式-Strategy Pattern【学习难度：★☆☆☆☆，使用频率：★★★★☆】</p>
+<p>算法的封装与切换——策略模式（一）：电影票打折方案</p>
+<p>算法的封装与切换——策略模式（二）：策略模式概述</p>
+<p>算法的封装与切换——策略模式（三）：电影票打折方案的策略模式解决方案</p>
+<p>算法的封装与切换——策略模式（四）：策略模式的两个典型应用，策略模式总结</p>
+<p>模板方法模式-Template Method Pattern【学习难度：★★☆☆☆，使用频率：★★★☆☆】</p>
+<p>模板方法模式深度解析（一）：模板方法模式概述，模板方法模式结构与实现</p>
+<p>模板方法模式深度解析（二）：模板方法模式应用实例（银行利息计算模块）</p>
+<p>模板方法模式深度解析（三）：钩子方法的使用，模板方法模式效果与适用场景</p>
+<p>访问者模式-Visitor Pattern【学习难度：★★★★☆，使用频率：★☆☆☆☆】</p>
+<p>操作复杂对象结构——访问者模式（一）：OA系统中员工数据汇总</p>
+<p>操作复杂对象结构——访问者模式（二）：访问者模式概述</p>
+<p>操作复杂对象结构——访问者模式（三）：OA系统中员工数据汇总的访问者模式解决方案</p>
+<p>操作复杂对象结构——访问者模式（四）：访问者模式与组合模式联用，访问者模式总结</p>
+<p>设计模式趣味学习（复习）</p>
+<p>设计模式与足球（一）：创建型模式</p>
+<p>设计模式与足球（二）：结构型模式</p>
+<p>设计模式与足球（三）：行为型模式（上）</p>
+<p>设计模式与足球（四）：行为型模式（下）</p>
+<p>设计模式综合应用实例</p>
+<p>多人联机射击游戏</p>
+<p>多人联机射击游戏中的设计模式应用（一）：抽象工厂模式，建造者模式，工厂方法模式，迭代器模式，命令模式</p>
+<p>多人联机射击游戏中的设计模式应用（二）：观察者模式，单例模式，状态模式，适配器模式</p>
+<p>数据库同步系统</p>
+<p>设计模式综合实例分析之数据库同步系统（一）：数据库同步系统概述，建造者模式，简单工厂模式</p>
+<p>设计模式综合实例分析之数据库同步系统（二）：享元模式，单例模式，观察者模式，模板方法模式</p>
+<p>设计模式综合实例分析之数据库同步系统（三）：策略模式，组合模式，命令模式，职责链模式</p>
+<h2 id="gitbook"><a href="https://gof.quanke.name/">GitBook 图书 </a></h2>
+<h2 id="httpwwwrunoobcom"><a href="http://www.runoob.com/design-pattern/design-pattern-tutorial.html"><a href="http://www.runoob.com/"><a href="http://www.runoob.com/">http://www.runoob.com/</a></a> 设计模式</a></h2></article></body></html>
