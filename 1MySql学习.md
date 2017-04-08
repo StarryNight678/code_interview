@@ -696,8 +696,66 @@ alter table;
 
 # 7 数据库中使用索引
 
+采用B树的方式来管理索引.
+
+## 创建索引
+
+create [unique] index 索引名 on 表名 (列名);
+
+create index  id_index on student(id);
+
+- 显示索引
+
+show  index from student;
+
+- 删除索引
+drop index 索引名  on  表名;
+
+- 创建多列构成的复合索引和唯一索引.
+
+create [unique] index 索引名 on 表名 (列名1,列名2,列名3);
+
+指定 unique 关键词将创建不可重复的索引.称为唯一索引.
+
+- 确认索引使用状态.explain
+
+explain select id from student;
+
+'1', 'SIMPLE', 'student', NULL, 'index', NULL, 'id_index', '4', NULL, '64', '100.00', 'Using index'
+
+
+
+- 索引使用哪个场合.
+
+like 只有前方一致性检索才能使用索引.
+
+select * from table where name like 'w%';
+
+下面的后方一致性和部分一致性无法使用索引.
+
+select * from table where name like '%w';
+
+select * from table where name like '%w%';
+
+使用 is not null   <> 比较运算的场合无法使索引.
+
+使用了运算符函数的场合
+
+select * from table where year(birth)='1980';
+
+-  复合索引的第一列没有包含在where语句中的情况 or也不行
+
+create [unique] index 索引名 on 表名 (列名1,列名2,列名3);
+
+
 
 # 8 视图使用
+
+视图的本质就是将select 的数据以结果的形式保存出来.
+
+视图作用;
+
+
 # 9 存储过程
 # 10 函数与触发器
 # 11 数据库管理中文件的使用
