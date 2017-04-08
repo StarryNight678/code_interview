@@ -1,5 +1,7 @@
 # MySql 学习
 
+<<MYSQL高效编程>>
+
 ## 重要设置
 
 关闭  safe update mode
@@ -344,6 +346,10 @@ DELETE [LOW_PRIORITY] [QUICK] [IGNORE]
 
 select  列名1 ,列名2 from 表名 [表达式];
 
+
+过滤重复行
+
+SELECT distinct  name FROM  student;
 
 
 ```
@@ -753,12 +759,235 @@ create [unique] index 索引名 on 表名 (列名1,列名2,列名3);
 
 视图的本质就是将select 的数据以结果的形式保存出来.
 
-视图作用;
+##  视图作用
+
+1. 公开特定行与列
+1. 简化sql查询
+1. 限制插入更新范围
+
+## 创建视图
+
+create view 视图名(列名)  as select 语句 [with check point];
+
+create view myview (id) as select id from student;
+
+
+## 删除视图
+
+drop view  视图名;
+
+显示列信息
+
+show fields from myview;
+
+视图的插入,删除,更新 和表方法相同.
+
+- 以下情况不能插入 删除 更新
+
+1. 视图列含有统计函数的情况
+1. 视图使用group by /having 语句 distinct 
+1. 使用子查询
+1. 跨越多个表
+
+
+
+- 过滤重复行
+
+SELECT distinct  name FROM  student;
+
+- with check point
+
+不能插入,不符合视图检索条件数据
 
 
 # 9 存储过程
+
+- 好处
+
+1. 提高执行性能: 存储过程事先完成解析,编译.
+1. 减轻网络负担:复杂数据库操作可以在数据库服务器中完成.
+1. 防止表直接访问:客户端只能通过存储过程来访问表.
+1. 可将数据处理黑盒化
+
+
+## 定义存储过程
+
+三种类型参数
+in
+out
+inout
+```
+create procedure 存储过程名(
+参数种类1 参数1
+参数种类2 参数2
+)
+begin
+	处理内容
+end
+```
+
+```
+delimiter //
+create procedure sp_name (
+in p_name varchar(20)
+)
+begin
+	if p_name is not null or p_name= '' then 
+		select * from table_name;
+	else
+        select * from table_name where name like p_name;
+	end if
+end
+//
+delimiter ;
+```
+
+更换默认分隔符.
+
+delimiter //
+
+在执行完存储过程,后恢复默认的分隔符号.
+
+```
+if  XX
+	XXX
+elseif XX
+	XXX
+else 
+	XXX
+endif
+
+case  表达式1
+	when  值1 then 执行命令
+    when  值2 then 执行命令
+end case
+
+
+repeat
+	执行命令
+until 表达式  end repeate
+
+while 表达式  do
+		执行命令
+end while
+```
+
+- 显示存储过程
+
+show procedure status;
+
+
+- 调用存储过程
+
+call sp_name (参数);
+
+- 本地变量
+
+declare 变量名  数据类型;
+
+- 赋值
+
+set 变量名=值;
+
+
 # 10 函数与触发器
+
+定义存储函数  
+
+```
+create function 函数名(
+参数1 数据类型) 
+returns 返回值类型
+begin
+	XX
+	return 返回值;
+end
+```
+
+## 存储过程和存储函数的区别
+
+1. 存储函数,参数只有输入型
+1. 存储函数必须在return后定义返回类型.
+
+-  显示存储函数
+
+show function status;
+
+##  触发器
+
+```
+delimiter //
+create trigger 触发器名 befor/after delete/update/insert on 表名 for each row
+beging
+	任意sql语句
+end
+delimiter ;
+```
+
+- 显示触发器
+
+show triggers;
+
+
+- 删除触发器
+
+drop trigger 触发器名;
+
+## 游标
+
+处理sql不擅长的对记录一件件单独处理.
+
+先用select 语句检索出符合条件的记录保存到内存中.
+然后游标对内存中集合依次处理.
+
+游标通过移动指针进行逐行处理.
+
+- 声明游标 
+
+declare 游标名 cursor for select 语句;
+
+- 打开游标 
+
+取得具体记录的集合.
+
+open 游标名
+
+- 从指针中取得记录数据
+
+fetch 游标名 into 变量名;
+
+- 声明 取出所有记录时的处理
+
+- 关闭游标
+
+close 游标名;
+
+
+
 # 11 数据库管理中文件的使用
+
+
+- 导入数据文件
+
+load data infile  文件名  into table 表名 选项;
+
+- 导出数据
+
+select * into outfile 文件名 选项 from  表名;
+
+- 执行保存好的sql文件
+
+source  文件名;
+
+
+- 进行数据转存
+
+mysqldumpp
+
+
+- 利用转存文件进行恢复
+
+mysqladmin 
 
 
 
