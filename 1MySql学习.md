@@ -706,34 +706,42 @@ alter table;
 
 ## 创建索引
 
+```sql
 create [unique] index 索引名 on 表名 (列名);
-
 create index  id_index on student(id);
+```
 
 - 显示索引
 
+```sql
 show  index from student;
+```
 
 - 删除索引
+
 drop index 索引名  on  表名;
 
 - 创建多列构成的复合索引和唯一索引.
 
+```sql
 create [unique] index 索引名 on 表名 (列名1,列名2,列名3);
+```
 
 指定 unique 关键词将创建不可重复的索引.称为唯一索引.
 
 - 确认索引使用状态.explain
 
+```sql
 explain select id from student;
+```
 
 '1', 'SIMPLE', 'student', NULL, 'index', NULL, 'id_index', '4', NULL, '64', '100.00', 'Using index'
 
 
 
-- 索引使用哪个场合.
+##  索引使用哪个场合.
 
-like 只有前方一致性检索才能使用索引.
+- like 只有前方一致性检索才能使用索引.
 
 select * from table where name like 'w%';
 
@@ -743,9 +751,9 @@ select * from table where name like '%w';
 
 select * from table where name like '%w%';
 
-使用 is not null   <> 比较运算的场合无法使索引.
+- 使用 is not null   <> 比较运算的场合无法使索引.
 
-使用了运算符函数的场合
+- 使用了运算符函数的场合
 
 select * from table where year(birth)='1980';
 
@@ -767,14 +775,16 @@ create [unique] index 索引名 on 表名 (列名1,列名2,列名3);
 
 ## 创建视图
 
+```sql
 create view 视图名(列名)  as select 语句 [with check point];
-
-create view myview (id) as select id from student;
-
+create view myview (id)   as  select id from student;
+```
 
 ## 删除视图
 
+```sql
 drop view  视图名;
+```
 
 显示列信息
 
@@ -789,11 +799,11 @@ show fields from myview;
 1. 使用子查询
 1. 跨越多个表
 
+- 过滤重复行 **distinct**
 
-
-- 过滤重复行
-
+```sql
 SELECT distinct  name FROM  student;
+```
 
 - with check point
 
@@ -816,6 +826,7 @@ SELECT distinct  name FROM  student;
 in
 out
 inout
+
 ```
 create procedure 存储过程名(
 参数种类1 参数1
@@ -879,7 +890,7 @@ show procedure status;
 
 - 调用存储过程
 
-call sp_name (参数);
+call sp_name(参数);
 
 - 本地变量
 
@@ -933,7 +944,7 @@ show triggers;
 
 drop trigger 触发器名;
 
-## 游标
+## **游标**
 
 处理sql不擅长的对记录一件件单独处理.
 
