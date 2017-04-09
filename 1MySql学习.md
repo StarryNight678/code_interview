@@ -73,7 +73,7 @@ INSERT INTO TABLE (a,c) VALUES (1,3) ON DUPLICATE KEY UPDATE c=c+1
 出现重复则执行更新,否则插入新行.
 
 
-方法3: REPLACE
+- 方法3: REPLACE
 
 在使用REPLACE时，表中必须有唯一索引，而且这个索引所在的字段不能允许空值，否则REPLACE就和INSERT完全一样的。 
 
@@ -205,18 +205,16 @@ create table student (
 	 );
 ```
 
-
-create table s2 (
-	id  int(6) primary key auto_increment,
-	name varchar(10) not null
-	 );
+```sql
 insert s1 (name) valuse('s1');
+```
 
 ## 插入数据
 
+```sql
 insert 表名 (列名) values();
-
 mysql> insert S (sno,sname) values(4,'test');
+```
 
 如果插入数据覆盖了所有列的话,可以省略列名.
 
@@ -299,11 +297,11 @@ SELECT
 
 ##  更新
 
+```sql
 update 表名 set 列名=值1  where 表达式;
-
 update student set id=99 ,name='test' where id=3;
-
 update student set name='test'   --省略where将更新所有记录
+```
 
 ```
 UPDATE [LOW_PRIORITY] [IGNORE] table_reference
@@ -320,13 +318,15 @@ UPDATE [LOW_PRIORITY] [IGNORE] table_references
 ```
 ## 删除
 
+```sql
 delete from tbl_name where 表达式;
+```
 
 省略 where将删除表的所有数据.
 
 删除表所有数据,更快 更高效命令.
 
-truncate table  tbl_name
+**truncate table  tbl_name**
 
 破坏表的结构和数据,然后创建他.
 
@@ -476,7 +476,7 @@ select  count(id),name as hello from ss  group by name;
 通过Case函数进行简单的条件判断
 
 
-```
+```sql
 case 表达式
 	when 比较值1 then 结果1
 	when 比较值2 then 结果1
@@ -493,7 +493,7 @@ from student;
 ```
 
 
-- 多个表连接
+## 多个表连接
 
 ## 内连接
 
@@ -524,7 +524,7 @@ select * from product where price > (select avg(price) from  product );
 
 select * from usr where uid not in (select id from  name);
 
-- exists 语句
+## exists 语句
 
 select name from usr where exists (select * from name);
 
