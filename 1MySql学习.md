@@ -305,17 +305,19 @@ INSERT INTO TABLE (a,c) VALUES (1,3) ON DUPLICATE KEY UPDATE c=c+1
 
 - 方法3: REPLACE
 
-在使用REPLACE时，表中必须有唯一索引，而且这个索引所在的字段不能允许空值，否则REPLACE就和INSERT完全一样的。 
+**在使用REPLACE时，表中必须有唯一索引，**而且这个索引所在的字段不能允许空值，否则REPLACE就和INSERT完全一样的。 
 
 在执行REPLACE后，系统返回了所影响的行数，如果返回1，说明在表中并没有重复的记录，如果返回2，说明有一条重复记录，系统自动先调用了DELETE删除这条记录，然后再记录用INSERT来插入这条记录。如果返回的值大于2，那说明有多个唯一索引，有多条记录被删除和插入。 
 
 REPLACE的语法和INSERT非常的相似，如下面的REPLACE语句是插入或更新一条记录。 
 
+```sql
 REPLACE INTO users (id,name,age) VALUES(123, '赵本山', 50); 
-　 
-插入多条记录： 
-
 ```
+
+- 插入多条记录： 
+
+```sql
 REPLACE INTO users(id, name, age) 
 
 VALUES(123, '赵本山', 50), (134,'Mary',15); 
@@ -1403,7 +1405,7 @@ SELECT SNO FROM sc
 
 ```sql
     SELECT sc.SNO FROM sc 
-    GROUP BY sc.CNO
+    GROUP BY sc.sNO
     HAVING COUNT(sc.CNO)>=2
 ```
 
@@ -1488,7 +1490,8 @@ EXISTS代表存在量词∃。带有EXISTS谓词的子查询不返回任何数�
 ```sql
 SELECT Sname FROM student  
 WHERE EXISTS  
-(SELECT * FROM sc,course WHERE Sno=student.Sno AND sc.Cno=course.Cno AND course.Cname="操作系统")  
+(SELECT * FROM sc,course 
+   WHERE Sno=student.Sno AND sc.Cno=course.Cno AND course.Cname="操作系统")  
 ```
 本例中的子查询的查询条件依赖于外层父查询的某个属性值（本例中的是Student的Sno值），这个相关子查询的处理过程是：
 
