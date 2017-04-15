@@ -191,24 +191,216 @@ multiset,和set的区别是.multiset允许键值重复.
 
 快排选择flag 选择(头 尾  中央) 按照中值进行计算.
 
+## [Containers www.cplusplus.com](http://www.cplusplus.com/reference/stl/)
 
-
-```c
-
-```
+## 顺序容器
 
 ```c
-
+array 
+Array class (class template )
+vector
+Vector (class template )
+deque
+Double ended queue (class template )
+forward_list 
+Forward list (class template )
+list
+List (class template )
 ```
+
+vector
+```
+push_back
+Add element at the end (public member function )
+pop_back
+Delete last element (public member function )
+insert
+Insert elements (public member function )
+erase
+Erase elements (public member function )
+swap
+Swap content (public member function )
+clear
+Clear content (public member function )
+```
+
+deque
 
 ```c
-
+assign
+Assign container content (public member function )
+push_back
+Add element at the end (public member function )
+push_front
+Insert element at beginning (public member function )
+pop_back
+Delete last element (public member function )
+pop_front
+Delete first element (public member function )
+insert
+Insert elements (public member function )
+erase
+Erase elements (public member function )
+swap
+Swap content (public member function )
+clear
+Clear content (public member function )
+emplace 
+Construct and insert element (public member function )
+emplace_front 
+Construct and insert element at beginning (public member function )
+emplace_back 
+Construct and insert element at the end (public member function )
 ```
+
+list
 
 ```c
-
+assign
+Assign new content to container (public member function )
+emplace_front 
+Construct and insert element at beginning (public member function )
+push_front
+Insert element at beginning (public member function )
+pop_front
+Delete first element (public member function )
+emplace_back 
+Construct and insert element at the end (public member function )
+push_back
+Add element at the end (public member function )
+pop_back
+Delete last element (public member function )
+emplace 
+Construct and insert element (public member function )
+insert
+Insert elements (public member function )
+erase
+Erase elements (public member function )
+swap
+Swap content (public member function )
+resize
+Change size (public member function )
+clear
+Clear content (public member function )
+splice
+Transfer elements from list to list (public member function )
+remove
+Remove elements with specific value (public member function )
+remove_if
+Remove elements fulfilling condition (public member function template )
+unique
+Remove duplicate values (public member function )
+merge
+Merge sorted lists (public member function )
+sort
+Sort elements in container (public member function )
+reverse
+Reverse the order of elements (public member function )
 ```
+
+
+##  容器适配器
 
 ```c
-
+Container adaptors:
+stack
+LIFO stack (class template )
+queue
+FIFO queue (class template )
+priority_queue
+Priority queue (class template )
 ```
+
+stack
+
+```c
+empty
+Test whether container is empty (public member function )
+size
+Return size (public member function )
+top
+Access next element (public member function )
+push
+Insert element (public member function )
+emplace 
+Construct and insert element (public member function )
+pop
+Remove top element (public member function )
+swap 
+Swap contents (public member function )
+```
+
+queue
+
+```c
+empty
+Test whether container is empty (public member function )
+size
+Return size (public member function )
+front
+Access next element (public member function )
+back
+Access last element (public member function )
+push
+Insert element (public member function )
+emplace 
+Construct and insert element (public member function )
+pop
+Remove next element (public member function )
+swap 
+Swap contents (public member function )
+```
+
+##  关联容器
+
+```c
+Associative containers:
+set
+Set (class template )
+multiset
+Multiple-key set (class template )
+map
+Map (class template )
+multimap
+Multiple-key map (class template )
+```
+
+set
+
+```c
+insert
+Insert element (public member function )
+erase
+Erase elements (public member function )
+swap
+Swap content (public member function )
+clear
+Clear content (public member function )
+emplace 
+Construct and insert element (public member function )
+emplace_hint 
+Construct and insert element with hint (public member function )
+find
+Get iterator to element (public member function )
+```
+
+map
+
+```c
+insert
+Insert elements (public member function )
+erase
+Erase elements (public member function )
+swap
+Swap content (public member function )
+clear
+Clear content (public member function )
+emplace 
+Construct and insert element (public member function )
+emplace_hint 
+Construct and insert element with hint (public member function )
+find
+Get iterator to element (public member function )
+```
+
+
