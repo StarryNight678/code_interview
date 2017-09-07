@@ -1,0 +1,74 @@
+# 网络
+
+
+必须要理解下面的几个重要的概念。
+
+MTU: Maxitum Transmission Unit 最大传输单元
+MSS: Maxitum Segment Size 最大分段大小
+PPPoE: PPP Over Ethernet（在以太网上承载PPP协议），就是因为这个协议的出现我们才有必要修改我们的MSS或者是MTU值。
+MTU最大传输单元，这个最大传输单元实际上和链路层协议有着密切的关系，EthernetII帧的结构DMAC+SMAC+Type+Data+CRC
+ 
+由于以太网传输电气方面的限制，每个以太网帧都有最小的大小64bytes最大不能超过1518bytes，对于小于或者大于这个限制的以太网帧我们都可以视之为错误的数据帧，一般的以太网转发设备会丢弃这些数据帧。
+由于以太网EthernetII最大的数据帧是1518Bytes这样，刨去以太网帧的帧头（DMAC目的MAC地址 48bit=6Bytes+SMAC源MAC地址48bit=6Bytes+Type域2bytes）14Bytes和帧尾CRC校验部分 4Bytes（这个部分有时候也把它叫做FCS），那么剩下承载上层协议的地方也就是Data域最大就只能有1500Bytes，这个值我们就把它称之为MTU。这个就是网络层协议非常关心的地方，因为网络层协议比如IP协议会根据这个值来决定是否把上层传下来的数据进行分片。
+
+
+[就是要你懂 TCP](http://jm.taobao.org/categories/%E7%BD%91%E7%BB%9C/)
+
+## 就是要你懂 TCP | 通过案例来学习 MSS、MTU
+
+
+
+tcp建连接的三次握手
+
+来看一个java代码连接数据库的三次握手过程
+
+![](http://ata2-img.cn-hangzhou.img-pub.aliyun-inc.com/6d66dadecb72e11e3e5ab765c6c3ea2e.png)
+
+
+握手的次要目的是告知和协商一些信息，图中黄框。
+
+MSS–最大传输包
+SACK_PERM–是否支持Selective ack(用户优化重传效率）
+WS–窗口计算指数（有点复杂的话先不用管）
+这就是tcp为什么要握手建立连接，就是为了解决tcp的可靠传输。
+
+## 四次挥手
+
+![](http://ata2-img.cn-hangzhou.img-pub.aliyun-inc.com/b6f4a952cdf8ffbb8f6e9434d1432e05.png)
+
+
+四个红框表示断开连接的四次挥手：
+
+第一步： client主动发送fin包给server
+第二步： server回复ack（对应第一步fin包的ack）给client，表示server知道client要断开了
+第三步： server发送fin包给client，表示server也可以断开了
+第四部： client回复ack给server，表示既然双发都发送fin包表示断开，那么就真的断开吧
+
+
+
+## 就是要你懂 TCP | 最经典的TCP性能问题
+
+
+
+- delay ack。
+
+
+delay 
+
+ack是指收到包后不立即ack，而是等一小会（比如40毫秒）看看，如果这40毫秒以内正好有一个包（比如上面的http response）发给client，那么我这个ack包就跟着发过去（顺风车，http reponse包不需要增加任何大小），这样节省了资源。 当然如果超过这个时间还没有包发给client（比如nginx处理需要40毫秒以上），那么这个ack也要发给client了（即使为空，要不client以为丢包了，又要重发http request，划不来）。
+
+假如这个时候ack包还在等待延迟发送的时候，又收到了client的一个包，那么这个时候server有两个ack包要回复，那么os会把这两个ack包合起来立即回复一个ack包给client，告诉client前两个包都收到了。
+
+也就是delay ack开启的情况下：ack包有顺风车就搭；如果凑两个ack包自己包个车也立即发车；再如果等了40毫秒以上也没顺风车，那么自己打个车也发车。
+
+截图中Nginx没有开delay ack，所以你看红框中的ack是完全可以跟着绿框（http response）一起发给client的，但是没有，红框的ack立即打车跑了
+
+
+
+
+
+
+
+
+
+
